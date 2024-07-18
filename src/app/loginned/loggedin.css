@@ -1,0 +1,19 @@
+@keyframes loadingDots {
+  0% {
+    content: 'Loading';
+  }
+  33% {
+    content: 'Loading.';
+  }
+  66% {
+    content: 'Loading..';
+  }
+  100% {
+    content: 'Loading...';
+  }
+}
+
+.loading::after {
+  content: 'Loading';
+  animation: loadingDots 1s steps(3, end) infinite;
+}
