@@ -5,13 +5,13 @@ import FAQ from "./faq";
 import { getAuth } from "../app/actions/help";
 import React, { useEffect, useState } from "react";
 
-export default function home() {
+export default function Home() {
 
    
-  const [session, setSession] = useState<any>("");
+  const [session, SetSession] = useState<any>("");
   useEffect(() => {
     getAuth().then((session) => {
-      setSession(session);
+      SetSession(session);
     });
   }, []);
 

@@ -1,0 +1,45 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Organization Model
+model Organization {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String   @unique
+}
+
+// Product Model
+model Product {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String
+  code        String
+  userId      String @db.ObjectId
+}
+
+
+
+// User Model
+model User {
+  id                   String   @id @default(auto()) @map("_id") @db.ObjectId
+  firstName            String
+  lastName             String
+  email                String   @unique
+  password             String
+  isAdmin              Boolean  @default(false)
+  verifyCode           String?  
+  verifyCodeExpiry     DateTime?  
+  isVerified           Boolean  @default(true)
+  activationCode       String?
+  activationCodeExpiry DateTime?
+  isActivated          Boolean  @default(true)
+  products             String?  @map("_products") @db.ObjectId
+
+}

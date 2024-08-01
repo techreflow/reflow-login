@@ -1,53 +1,50 @@
+// app/api/auth/[...nextauth]/route.ts
+
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import {CredentialsSignin} from "next-auth";
 import bcrypt from "bcryptjs";
-import dbConnect from "@/lib/dbConnect";
-import UserModel from "@/model/User";
+import { PrismaAdapter } from "@auth/prisma-adapter"
+import { db } from "./lib/db";
 
-export const {handlers:{GET,POST},signIn,signOut,auth} = NextAuth({
+
+export const { handlers: { GET, POST }, signIn, signOut, auth } = NextAuth({
+  adapter: PrismaAdapter(db),
   providers: [
     CredentialsProvider({
       id: "credentials",
       name: "Credentials",
       credentials: {
-        email: { label: "email", type: "email", placeholder: "email" },
-        password: {
-          label: "password",
-          type: "password",
-          placeholder: "password",
-        },
+        email: { label: "Email", type: "email", placeholder: "email" },
+        password: { label: "Password", type: "password", placeholder: "password" },
       },
       async authorize(credentials: any): Promise<any> {
-        if(!credentials.email || !credentials.password){
-          
-          throw new CredentialsSignin("Please enter valid credentials");
+        if (!credentials.email || !credentials.password) {
+          throw new Error("Email and password are required");
         }
-        await dbConnect();
+
         try {
-          const user = await UserModel.findOne({
-            email: credentials.email,
+          const user = await db.user.findUnique({
+            where: { email: credentials.email },
           });
+
           if (!user) {
-            
-            throw new CredentialsSignin("No user found");
+            throw new Error("No user found with this email");
           }
+
           if (!user.isVerified) {
-            
-            throw new CredentialsSignin("Please verify your email");
+            throw new Error("Please verify your email");
           }
-          const isPasswordCorrect = await bcrypt.compare(
-            credentials.password,
-            user.password
-          );
+
+          const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
+
           if (isPasswordCorrect) {
             return user;
           } else {
-           
-            throw new CredentialsSignin("Incorrect password");
+            throw new Error("Incorrect password");
           }
         } catch (error) {
-          throw new CredentialsSignin("error");
+          console.error("Authentication error:", error);
+          throw new Error("Authentication failed");
         }
       },
     }),
@@ -59,18 +56,20 @@ export const {handlers:{GET,POST},signIn,signOut,auth} = NextAuth({
     strategy: "jwt",
   },
   callbacks: {
-    async session({ session, token, user }) {
+    async session({ session, token }) {
       if (token) {
-        session.user.id = token.id;
-        session.user.firstName = token.firstName;
-        session.user.lastName = token.lastName;
-        session.user.isVerified = token.isVerified;
+        session.user = {
+          id: token.id,
+          firstName: token.firstName,
+          lastName: token.lastName,
+          isVerified: token.isVerified,
+        };
       }
       return session;
     },
     async jwt({ token, user }) {
       if (user) {
-        token.id = user._id;
+        token.id = user.id;
         token.firstName = user.firstName;
         token.lastName = user.lastName;
         token.isVerified = user.isVerified;

@@ -33,7 +33,7 @@ export function Login() {
       setUser(session?.user);
     });
     router.refresh();
-  }, []);
+  }, [router]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

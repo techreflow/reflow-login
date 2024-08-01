@@ -222,7 +222,7 @@ const Loggedin: React.FC =  () => {
       });
 
     // generate
-  }, []);
+  }, [router]);
 
   
 

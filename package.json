@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/mongodb-adapter": "^3.4.2",
+    "@auth/prisma-adapter": "^2.4.2",
     "@google/generative-ai": "^0.14.1",
+    "@prisma/client": "^5.17.0",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-toast": "^1.2.1",
     "@react-email/components": "^0.0.21",
@@ -32,10 +35,12 @@
     "install": "^0.13.0",
     "lucide-react": "^0.408.0",
     "mini-svg-data-uri": "^1.4.4",
+    "mongodb": "^6.8.0",
     "mongoose": "^8.5.1",
     "next": "14.2.4",
     "next-auth": "^5.0.0-beta.19",
     "npm": "^10.8.2",
+    "prisma": "^5.17.0",
     "react": "^18",
     "react-dom": "^18",
     "react-email": "^2.1.5",
