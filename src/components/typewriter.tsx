@@ -46,7 +46,7 @@ export default function Typewriter() {
       {session ? <>
         <Link className="text-black text-xl flex justify-end items-center gap-3" href={"/loginned"}>
           <span>Head to Dashboard {session?.user?.firstName}</span>
-          <button className="w-40 h-10 rounded-xl bg-black border dark:border-white border-transparent text-white  text-l"> Dashboard </button>
+          <button className="w-40 h-10 rounded-xl bg-black border dark:border-white border-transparent text-white hover:bg-white hover:text-black text-l hover:border-black"> Dashboard </button>
             
         </Link>
         </>: (

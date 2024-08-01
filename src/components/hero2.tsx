@@ -5,6 +5,8 @@ import Image from "next/image";
 import { PinContainer } from "../components/ui/3d-pin";
 import Globe from "./globeComp";
 import Alphaxmodel from "./alphaxmodel";
+import { Spotlight } from './ui/Spotlight';
+import Typewriter from "./typewriter";
 
 const content = [
   {
@@ -38,7 +40,7 @@ const content = [
     description:
       "The Alpha X series is engineered to deliver comprehensive products tailored to the needs of modern industries. It supports multi-protocol compatibility, seamlessly integrating with various sensors including Pt-100, pressure sensors, and more. Featuring wireless connectivity and online calibration capabilities, it enables real-time monitoring of critical parameters. Our products provide minimum/maximum threshold alerts, ensuring proactive maintenance and optimizing equipment performance. With its plug & play model and no configuration setup required, the Alpha X series offers a hassle-free one-time setup experience.",
     content: (
-      <div className="h-full w-full bg-black flex items-center justify-cente">
+      <div className="h-full w-full bg-black flex items-center justify-center">
         {/* <Image
           src="/ALPHAX.png"
           width={300}
@@ -46,6 +48,10 @@ const content = [
           className="h-full w-full object-cover"
           alt="linear board demo"
         /> */}
+        <Spotlight
+        className="-top-20 left-0 md:left-60 md:-top-20"
+        fill="#ffff"
+      />
         <Alphaxmodel />
       </div>
     ),
@@ -59,8 +65,8 @@ const content = [
       //   Running out of content
       // </div>
       <PinContainer
-            title="/reflowtech.com"
-            href="https://github.com/prashant-2204"
+            title="Dashbaord"
+            href="/loginned"
           >
             <div className="flex basis-full flex-col p-4 tracking-tight text-slate-100/50 sm:basis-1/2 w-[20rem] h-[20rem] ">
               <h3 className="max-w-xs !pb-2 !m-0 font-bold  text-base text-slate-100">
@@ -75,7 +81,10 @@ const content = [
                   4.0 technologies.
                 </span>
               </div>
-              <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-black via-sky-500 to-white" />
+              <div className="flex flex-1 w-full rounded-lg mt-4 bg-gradient-to-br from-black via-sky-500 to-white">
+              
+                </div> 
+
             </div>
           </PinContainer>
 

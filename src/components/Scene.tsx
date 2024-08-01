@@ -1,7 +1,8 @@
 import React, { Suspense, useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, useGLTF } from '@react-three/drei';
+import { OrbitControls, SpotLight, useGLTF } from '@react-three/drei';
 import { Group, Vector3 } from 'three';
+import { Spotlight } from './ui/Spotlight';
 
 interface GLTFResult {
   scene: Group;
@@ -63,10 +64,26 @@ const Scene: React.FC<SceneProps> = ({ modelUrl }) => {
         color="#0CA5E9"
         castShadow
       />
+      <spotLight
+        position={[-5, 2, 0]}
+        angle={120}
+        intensity={100}
+        color="#006400"
+        castShadow
+      />
+      
+
+<spotLight
+        position={[3, 3, 0]}
+        angle={-120}
+        intensity={200}
+        color="#006400"
+        castShadow
+      />
       <Suspense fallback={null}>
         <Model url={modelUrl} />
       </Suspense>
-      <OrbitControls />
+      <OrbitControls enableZoom={false} />
     </Canvas>
   );
 };

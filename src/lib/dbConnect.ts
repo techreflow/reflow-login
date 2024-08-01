@@ -12,7 +12,7 @@ async function dbConnect():Promise<void>{
     return;
   }
  try{
-  const db = await mongoose.connect("mongodb://localhost:27017" || "",{
+  const db = await mongoose.connect("mongodb://localhost:27017" ,{
     dbName: "reFlow",
   });
   connection.isConnected = db.connections[0].readyState;

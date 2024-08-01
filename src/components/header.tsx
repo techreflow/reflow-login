@@ -10,7 +10,7 @@ export function SignOut()
 {
   return(
     <form action={ doSignOut}>
-     <button className="bg-sky-100 text-sky-600 hover:bg-sky-200 py-2 px-4 rounded-lg" type="submit"> sign Out</button>
+     <button className="text-white bg-black py-2 px-5 rounded-3xl hover:text-black hover:bg-white hover:border-black hover:border" type="submit"> sign Out</button>
     </form>
   )
 }
@@ -25,24 +25,41 @@ export default async function Header() {
     flag=true;
   }
   return (
-    <header className="bg-gray-100 p-4 shadow-sm ">
+    <header className="bg-white p-4 shadow-sm border-b-[1px] ">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center space-x-2">
         <div className="text-lg">
           <Link href="/" className="font-bold text-2xl text-sky-500">Re</Link>
-          <Link href="/" className="font-bold text-2xl  text-black">Flow Tech</Link>
+          <Link href="/" className="font-bold text-2xl  text-black">Flow Tech <sup className='text-gray-600 text-sm '>TM</sup></Link>
           </div>
         </div>
         <nav className="flex space-x-6">
-          <a href="#product" className="text-gray-600 hover:text-black">Services</a>
-          <a href="#features" className="text-gray-600 hover:text-black">Pricing</a>
-          <a href="#pricing" className="text-gray-600 hover:text-black">Support</a>
-          <a href="#company" className="text-gray-600 hover:text-black">Contact us</a>
-        </nav>
-        <div className="flex items-center space-x-4">
-          {flag?<SignOut/>:<a href="/login" className="text-gray-600 hover:text-black">Log In</a> }
           
-          {flag?null:<Link href="/register" className="bg-sky-100 text-sky-600 hover:bg-sky-200 py-2 px-4 rounded-lg">Register</Link>}
+        <Link href="/#home" className='group text-gray-600 transition-all duration-300 ease-in-out'>
+        <p className="bg-left-bottom bg-gradient-to-r from-sky-500 to-sky-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Home</p>
+        </Link>
+        <Link href="/#about" className='group text-gray-600 transition-all duration-300 ease-in-out'>
+        <p className="bg-left-bottom bg-gradient-to-r from-sky-500 to-sky-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">About Us</p>
+        </Link>
+        <Link href="/#products" className='group text-gray-600 transition-all duration-300 ease-in-out'>
+        <p className="bg-left-bottom bg-gradient-to-r from-sky-500 to-sky-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Products</p>
+        </Link>
+        <Link href="/#services" className='group text-gray-600 transition-all duration-300 ease-in-out'>
+        <p className="bg-left-bottom bg-gradient-to-r from-sky-500 to-sky-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Services</p>
+        </Link>
+        <Link href="/#" className='group text-gray-600 transition-all duration-300 ease-in-out' >
+        <p className="bg-left-bottom bg-gradient-to-r from-sky-500 to-sky-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Contact Us</p>
+        </Link>
+          
+           
+          
+         
+          
+        </nav>
+        <div className="flex items-center justify-evenly  space-x-4">
+          {flag?<SignOut/>:<a href="/login" className="text-white bg-black py-2 px-5 rounded-3xl hover:text-black hover:bg-white hover:border-black hover:border">Login</a> }
+          
+          {flag?null:<Link href="/register" className="bg-white text-black border border-black hover:bg-black hover:text-white py-2 px-4 rounded-3xl">Register</Link>}
         </div>
       </div>
 

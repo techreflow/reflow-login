@@ -1,20 +1,13 @@
-
 "use client";
-
-
-import React, { use } from "react";
-import { useState, useEffect } from "react";
-import { Label } from "../../../components/ui/label";
-import { Input } from "../../../components/ui/input";
-import { cn } from "@/utils/cn";
+import Image from 'next/image';
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { doSign,toProtectLogin } from "../../actions/help";
-import { useSession } from "next-auth/react";
+import { doSign, toProtectLogin } from "../../actions/help";
 import { getAuth } from "../../actions/help";
-import { set } from "mongoose";
-import { useToast } from "@/components/ui/use-toast"
-
-export function VerifyCode() {}
+import { useToast } from "@/components/ui/use-toast";
+import { Label } from "../../../components/ui/labelLogin";
+import { Input } from "../../../components/ui/InputLogin";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"; // Importing icons
 
 interface User {
   firstName: string;
@@ -30,42 +23,37 @@ export function Login() {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<any>("");
   const [check, setCheck] = useState<boolean>();
-  const { toast } = useToast()
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const { toast } = useToast();
+
   useEffect(() => {
-    toProtectLogin().then((res) => {setCheck(res)});
-      getAuth().then((session) => {
-        setSession(session);
-        setUser(session?.user);
-      });
-      router.refresh();
-    // generate
+    toProtectLogin().then((res) => setCheck(res));
+    getAuth().then((session) => {
+      setSession(session);
+      setUser(session?.user);
+    });
+    router.refresh();
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
-    const toastID=toast({
-      title: "logging in"});
-  
-    if(!userInfo.email || !userInfo.password){
-      toast({variant:"destructive",
-        title: "please enter crediantials"})
+    const toastID = toast({
+      title: "Logging in",
+    });
+
+    if (!userInfo.email || !userInfo.password) {
+      toast({ variant: "destructive", title: "Please enter credentials" });
       setLoading(false);
       return;
     }
 
     try {
-      const {email,password}=userInfo;
-     await doSign(userInfo);
-      
-        toast({title:"Logged In successfully",variant:"default"})
-
-        console.log("Form submitted successfully");
-      } 
-      
-    catch (error) {
-     
-      toast({title:"Please enter valid credentials",variant:"destructive"})
+      await doSign(userInfo);
+      toast({ title: "Logged In successfully", variant: "default" });
+      console.log("Form submitted successfully");
+    } catch (error) {
+      toast({ title: "Invalid credentials", variant: "destructive" });
       console.error("Form submission error:", error);
     } finally {
       setLoading(false);
@@ -74,138 +62,82 @@ export function Login() {
     console.log("Form submitted");
   };
 
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
   return (
     <>
-      <div className="h-screen w-full bg-black flex flex-col items-center justify-center overflow-hidden rounded-md">
-        <div className="w-[40rem] h-15 relative">
-          <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
-          <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
-          <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
-          <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-px w-1/4" />
+      <div className="h-full w-full flex justify-evenly pr-[3rem] bg-white items-center">
+        <div className="h-full w-[40%] bg-white p-6">
+          <h1 className="text-black font-bold tracking-wide text-4xl">Login</h1>
+          <p className="text-gray-600 mt-[1rem]">Fill in the details to login</p>
+          <div className="bg-gray-100 mt-8 p-8 rounded-3xl">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <div>
+                <Label htmlFor="email">
+                  <p className="text-gray-500">Email ID</p>
+                </Label>
+                <Input
+                  type="email"
+                  id="email"
+                  placeholder="Enter your email"
+                  value={userInfo.email}
+                  onChange={(e) => setUserInfo({ ...userInfo, email: e.target.value })}
+                  className="border border-gray-300 focus:border-black placeholder-gray-500 text-black"
+                />
+              </div>
+              <div className="relative">
+                <Label htmlFor="password">
+                  <p className="text-gray-500">Password</p>
+                </Label>
+                <div className="flex items-center relative border border-gray-300 focus-within:border-black rounded">
+                  <Input
+                    type={passwordVisible ? "text" : "password"}
+                    id="password"
+                    placeholder="Enter your password"
+                    value={userInfo.password}
+                    onChange={(e) => setUserInfo({ ...userInfo, password: e.target.value })}
+                    className="border-none flex-grow placeholder-gray-500 text-black pr-10"
+                  />
+                  <button
+                    type="button"
+                    onClick={togglePasswordVisibility}
+                    className="absolute right-0 p-2 text-gray-500 text-2xl"
+                    style={{ top: '50%', transform: 'translateY(-50%)' }}
+                  >
+                    {passwordVisible ? (
+                      <AiFillEyeInvisible />
+                    ) : (
+                      <AiFillEye />
+                    )}
+                  </button>
+                </div>
+              </div>
+              <button
+                type="submit"
+                className={`py-2 px-4 bg-black text-white rounded-xl ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+                disabled={loading}
+              >
+                {loading ? "Logging in..." : `Login ->`}
+              </button>
+              <a href="/forgot-password" className="text-black hover:underline">Forgot Password?</a>
+            </form>
+          </div>
         </div>
 
-        <div className="max-w-md w-full mx-auto p-4 md:p-8 shadow-input bg-white dark:bg-black">
-          <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
+        <div className="w-[40%] text-black h-[80vh] flex flex-col justify-center items-center">
+          <h2 className="font-bold text-xl text-neutral-800">
             WELCOME TO{" "}
-            <span className="font-bold text-3xl text-sky-500">Re</span>
-            <span className="font-bold text-3xl text-white">Flow Tech</span>
           </h2>
-          {check ? (
-            <p>Already Logged In </p>
-          ) : (
-            <>
-              <p className="text-neutral-600 text-sm max-w-sm mt-2 dark:text-neutral-300">
-                Login
-              </p>
-
-              <form className="my-8" onSubmit={handleSubmit}>
-                <LabelInputContainer className="mb-4">
-                  <Label htmlFor="email">Email Address</Label>
-                  <Input
-                    id="email"
-                    placeholder="prashant@xyz.com"
-                    type="email"
-                    name="email"
-                    value={userInfo.email}
-                    onChange={(e) =>
-                      setUserInfo((prev) => ({
-                        ...prev,
-                        email: e.target.value,
-                      }))
-                    }
-                  />
-                </LabelInputContainer>
-                <LabelInputContainer className="mb-4">
-                  <Label htmlFor="password">Password</Label>
-                  <Input
-                    id="password"
-                    placeholder="••••••••"
-                    type="password"
-                    name="password"
-                    value={userInfo.password}
-                    onChange={(e) =>
-                      setUserInfo((prev) => ({
-                        ...prev,
-                        password: e.target.value,
-                      }))
-                    }
-                  />
-                </LabelInputContainer>
-
-                <button
-                  className={cn(
-                    "bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]",
-                    { "cursor-not-allowed": loading }
-                  )}
-                  type="submit"
-                  disabled={loading}
-                >
-                  {loading ? (
-                    <div className="loader"></div>
-                  ) : (
-                    <>
-                      Log In &rarr;
-                      <BottomGradient />
-                    </>
-                  )}
-                </button>
-
-                <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
-              </form>
-            </>
-          )}
+          <Image
+            src="/lname.png"
+            width={500}
+            height={500}
+            alt="Picture of the author"
+          />
         </div>
       </div>
     </>
-  );
-}
-
-const BottomGradient = () => {
-  return (
-    <>
-      <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
-      <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
-    </>
-  );
-};
-
-const LabelInputContainer = ({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) => {
-  return (
-    <div className={cn("flex flex-col space-y-2 w-full", className)}>
-      {children}
-    </div>
-  );
-};
-
-// Add the loader CSS
-const styles = {
-  loader: {
-    border: "2px solid #f3f3f3", // Light grey
-    borderTop: "2px solid #3498db", // Blue
-    borderRadius: "50%",
-    width: "16px",
-    height: "16px",
-    animation: "spin 2s linear infinite",
-  },
-};
-
-const globalStyle = `
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-`;
-
-export default function GlobalStyles() {
-  return (
-    <style jsx global>{`
-      ${globalStyle}
-    `}</style>
   );
 }

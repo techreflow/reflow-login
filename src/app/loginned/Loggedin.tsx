@@ -34,6 +34,7 @@ interface ChartData {
 export const Dashboard: React.FC = () => {
   const [selectedDevice, setSelectedDevice] = useState<SensorDevice | null>(null);
   const [sensorReadings, setSensorReadings] = useState<SensorReading[]>([]);
+  
   const [chartData, setChartData] = useState<ChartData>({
     labels: [],
     temperatures: [],
@@ -76,6 +77,8 @@ export const Dashboard: React.FC = () => {
   };
 
   return (
+    
+
     <div className="flex flex-col justify-center items-center min-h-screen w-full bg-white text-black">
       <div className="p-8 rounded-lg shadow-lg text-center w-full max-w-screen-xl">
         <h1 className="text-2xl font-bold mb-4">Sensor Dashboard</h1>
@@ -189,6 +192,7 @@ const Loggedin: React.FC =  () => {
   // const [output,setOutput]=useState<string>("aam khata hai");
   // let output="aam khata hai kya nhi na";
   const [user,setUser]=useState<User | null>(null);
+  const [working,setWorking]=useState("false")
 
   // const generateText=async()=>{
   //   try{
@@ -243,7 +247,7 @@ const Loggedin: React.FC =  () => {
         ) : (
           null
         )}
-        {session?.user ? <Dashboard/> : <p className='text-2xl'>Not logged in</p>}
+        {session?.user ? working? <p className='text-2xl'>site in progress</p> :<Dashboard/> : <p className='text-2xl'>Not logged in</p>}
       
     </div>
   );
