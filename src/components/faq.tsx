@@ -2,17 +2,19 @@
 import { useState } from "react";
 
 const questions: string[] = [
-  "What is Webflow and why is it the best website builder?",
-  "What is your favorite template from BRIX Templates?",
-  "How do you clone a Webflow Template?",
-  "Why is BRIX Templates the best Webflow agency?"
+  "What does ReFlow Technologies specialize in?",
+  "What is the ReFlow Alpha X series?",
+  "How does ReFlow Technologies help industries reduce downtime and maintenance costs?",
+  "What makes ReFlow Technologies' solutions unique?",
+  "What kind of industries benefit from ReFlow Technologies' solutions?"
 ];
 
 const answers: string[] = [
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at morbi leo urna molestie atole elementum eu facilisis faucibus interdum posuere.',
-  'Answer for your favorite template from BRIX Templates.',
-  'Answer for how to clone a Webflow Template.',
-  'Answer for why BRIX Templates is the best Webflow agency.'
+  "ReFlow Technologies specializes in enhancing industrial processes through advanced Industrial IoT (IIoT) 4.0 solutions. Our products and services focus on real-time data acquisition, monitoring, and analysis to optimize efficiency and reduce operational costs.",
+  "The ReFlow Alpha X series is a suite of IIoT devices designed to collect and transmit data from industrial sensors. It offers seamless integration, real-time analytics, and online calibration, helping industries monitor and optimize their processes with minimal downtime.",
+  "Our solutions provide real-time monitoring and predictive analytics, enabling early detection of potential issues. This proactive approach minimizes unplanned downtime and reduces the frequency and cost of maintenance.",
+  "We offer a combination of robust hardware and intelligent software that seamlessly integrates with existing systems. Our focus on cost-effective installations, minimal maintenance, and comprehensive data analysis ensures that industries can operate smoothly and efficiently.",
+  "Our solutions cater to a wide range of industries, including manufacturing, process industries, and utilities. Any industry that relies on accurate data collection and analysis to optimize their operations can benefit from our offerings."
 ];
 
 export default function FAQ() {

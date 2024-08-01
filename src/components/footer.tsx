@@ -7,7 +7,9 @@ const Footer: React.FC = () => {
       <div className="container  flex justify-around mx-auto ">
         <div className="flex flex-col">
           <img src="/lname.png" alt="ReFlow Logo" className="w-32 mb-4" />
-          <p className="text-gray-400">Cras tincidunt lobortis feugiat</p>
+          <div className="flex flex-row"><span  className="font-bold text-xl text-sky-500 inline-block">Re</span>
+          <span  className="font-bold text-xl text-white inline-block">Flow Tech </span></div>
+          
         </div>
         <div className="flex justify-between space-x-16">
           <div>
@@ -23,8 +25,8 @@ const Footer: React.FC = () => {
             <h3 className="text-white text-lg mb-4">Products</h3>
             <ul className="space-y-2">
               <li><a href="#" className="text-gray-400 hover:text-white">Alpha X Series</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Alpha X Series</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Alpha X Series</a></li>
+              {/* <li><a href="#" className="text-gray-400 hover:text-white">Alpha X Series</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white">Alpha X Series</a></li> */}
             </ul>
           </div>
           <div>

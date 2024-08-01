@@ -68,8 +68,8 @@ export function Login() {
 
   return (
     <>
-      <div className="h-full w-full flex justify-evenly pr-[3rem] bg-white items-center">
-        <div className="h-full w-[40%] bg-white p-6">
+      <div className="h-full w-full flex flex-col lg:flex-row justify-evenly pr-[3rem] bg-white items-center">
+        <div className="h-full w-full lg:w-[40%] bg-white p-6">
           <h1 className="text-black font-bold tracking-wide text-4xl">Login</h1>
           <p className="text-gray-600 mt-[1rem]">Fill in the details to login</p>
           <div className="bg-gray-100 mt-8 p-8 rounded-3xl">
@@ -126,7 +126,7 @@ export function Login() {
           </div>
         </div>
 
-        <div className="w-[40%] text-black h-[80vh] flex flex-col justify-center items-center">
+        <div className="w-full lg:w-[40%] text-black h-[80vh] flex flex-col justify-center items-center">
           <h2 className="font-bold text-xl text-neutral-800">
             WELCOME TO{" "}
           </h2>

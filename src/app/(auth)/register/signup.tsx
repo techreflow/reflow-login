@@ -72,8 +72,8 @@ export function Signup() {
 
   return (
     <>
-      <div className="h-full w-full flex justify-evenly pr-[3rem] bg-white items-center">
-        <div className="h-full w-[40%] bg-white p-6">
+      <div className="h-full w-full flex flex-col md:flex-row justify-evenly md:pr-[3rem] bg-white items-center">
+        <div className="h-full w-full md:w-[40%] bg-white p-6">
           <h1 className="text-black font-bold tracking-wide text-4xl">Register</h1>
           <p className="text-gray-600 mt-[1rem]">Register to get started</p>
           <div className="bg-gray-100 mt-8 p-8 rounded-3xl">
@@ -132,7 +132,7 @@ export function Signup() {
                 <Label htmlFor="activationCode">Company Name</Label>
                 <Input
                   id="activationCode"
-                  placeholder="comapny name"
+                  placeholder="company name"
                   type="text"
                   value={userInfo.activationCode}
                   onChange={(e) =>
@@ -151,7 +151,7 @@ export function Signup() {
           </div>
         </div>
 
-        <div className="w-[40%] text-black h-[80vh] flex flex-col justify-center items-center">
+        <div className="w-full md:w-[40%] text-black h-[80vh] flex flex-col justify-center items-center">
           <h2 className="font-bold text-xl text-neutral-800">
             WELCOME TO{" "}
           </h2>
@@ -174,22 +174,3 @@ const LabelInputContainer = ({ children, className }: { children: React.ReactNod
     </div>
   );
 };
-
-export default function GlobalStyles() {
-  return (
-    <style jsx global>{`
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-      .loader {
-        border: 2px solid #0BA5E9; // Light grey
-        borderTop: 2px solid #0BA5E9; // Blue
-        borderRadius: 50%;
-        width: 16px;
-        height: 16px;
-        animation: spin 2s linear infinite;
-      }
-    `}</style>
-  );
-}
