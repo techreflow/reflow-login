@@ -1,26 +1,31 @@
-import  mongoose  from "mongoose";
+import mongoose from "mongoose";
 
-type connectionObject ={
-  isConnected?: number;
+type ConnectionObject = {
+  isConnected: number;
 }
 
-const connection: connectionObject = {};
+const connection: ConnectionObject = {
+  isConnected: 0, // Initialized to 0
+};
 
-async function dbConnect():Promise<void>{
-  if(connection.isConnected){
+async function dbConnect(): Promise<void> {
+  const URI = process.env.MONGO_URI as string;
+
+  if (connection.isConnected) {
     console.log("Using existing connection");
     return;
   }
- try{
-  const db = await mongoose.connect("mongodb://localhost:27017" ,{
-    dbName: "reFlow",
-  });
-  connection.isConnected = db.connections[0].readyState;
-  console.log("New connection");
-}
-catch(err){
-  console.log(err);}
-  
+
+  try {
+    const db = await mongoose.connect(URI, {
+      dbName: "reFlow",
+    });
+    
+    connection.isConnected = db.connections[0].readyState;
+    console.log("New connection");
+  } catch (err) {
+    console.error("MongoDB connection error:", err); // Optionally throw the error to handle it further up the call stack
+  }
 }
 
 export default dbConnect;
