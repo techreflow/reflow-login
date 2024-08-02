@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { Label } from "../../../components/ui/labelLogin";
 import { Input } from "../../../components/ui/InputLogin";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"; // Importing icons
 import { cn } from "@/utils/cn";
 
 interface UserInfo {
@@ -26,6 +27,7 @@ export function Signup() {
     password: "",
     activationCode: "",
   });
+  const [passwordVisible, setPasswordVisible] = useState(false); // State to toggle password visibility
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -68,6 +70,10 @@ export function Signup() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
   };
 
   return (
@@ -116,17 +122,32 @@ export function Signup() {
                   }
                 />
               </LabelInputContainer>
-              <LabelInputContainer className="mb-4">
+              <LabelInputContainer className="relative mb-4">
                 <Label htmlFor="password">Password</Label>
-                <Input
-                  id="password"
-                  placeholder="••••••••"
-                  type="password"
-                  value={userInfo.password}
-                  onChange={(e) =>
-                    setUserInfo({ ...userInfo, password: e.target.value })
-                  }
-                />
+                <div className="flex items-center relative border border-gray-300 focus-within:border-black rounded">
+                  <Input
+                    type={passwordVisible ? "text" : "password"}
+                    id="password"
+                    placeholder="••••••••"
+                    value={userInfo.password}
+                    onChange={(e) =>
+                      setUserInfo({ ...userInfo, password: e.target.value })
+                    }
+                    className="border-none flex-grow placeholder-gray-500 text-black pr-10"
+                  />
+                  <button
+                    type="button"
+                    onClick={togglePasswordVisibility}
+                    className="absolute right-0 p-2 text-gray-500 text-2xl"
+                    style={{ top: '50%', transform: 'translateY(-50%)' }}
+                  >
+                    {passwordVisible ? (
+                      <AiFillEyeInvisible />
+                    ) : (
+                      <AiFillEye />
+                    )}
+                  </button>
+                </div>
               </LabelInputContainer>
               <LabelInputContainer className="mb-8">
                 <Label htmlFor="activationCode">Company Name</Label>
