@@ -27,7 +27,6 @@ export default function FAQ() {
   return (
     <div className="bg-white flex flex-col w-full justify-center items-center px-4">
       <h1 className="text-black text-4xl mt-9 mb-4">Frequently Asked Questions</h1>
-      <p className="text-center text-gray-500 mb-8 w-[50%]">Cras tincidunt lobortis feugiat vivamus at morbi leo urna molestie atole elementum eu facilisis faucibus interdum posuere.</p>
       <div className="w-full max-w-2xl mb-6">
         {questions.map((q, index) => (
           <div key={index} className="border-t border-gray-300 py-4">
