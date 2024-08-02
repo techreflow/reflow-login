@@ -124,7 +124,7 @@ export function Signup() {
               </LabelInputContainer>
               <LabelInputContainer className="relative mb-4">
                 <Label htmlFor="password">Password</Label>
-                <div className="flex items-center relative border border-gray-300 focus-within:border-black rounded">
+                <div className="flex items-center relative  border-gray-300 focus-within:border-black rounded">
                   <Input
                     type={passwordVisible ? "text" : "password"}
                     id="password"

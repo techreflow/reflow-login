@@ -91,7 +91,7 @@ export function Login() {
                 <Label htmlFor="password">
                   <p className="text-gray-500">Password</p>
                 </Label>
-                <div className="flex items-center relative border border-gray-300 focus-within:border-black rounded">
+                <div className="flex items-center relative  border-gray-300 focus-within:border-black rounded">
                   <Input
                     type={passwordVisible ? "text" : "password"}
                     id="password"
