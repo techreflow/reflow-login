@@ -93,9 +93,10 @@ const Contact: React.FC = () => {
                 <textarea
                   id="message"
                   placeholder="Enter your message"
+                  
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="border border-gray-300 focus:border-black placeholder-gray-500 text-black p-2 rounded"
+                  className="border w-full border-gray-300 focus:border-black placeholder-gray-500 text-black p-2 rounded"
                   rows={4}
                   required
                 />

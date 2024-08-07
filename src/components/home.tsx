@@ -67,7 +67,7 @@ export default async function  Home() {
           <p className="text-white my-5 font-semibold leading-[1.25rem] lg:leading-[1.5rem] text-base lg:text-lg w-full lg:w-[90%]">
             No expensive integrators, no custom development, no physical configuration. Finally, the production monitoring and analytics platform you deserve.
           </p>
-          <div className="flex items-center h-[30%] mx-4">
+          <div className="flex items-center h-[30%] ">
             <Link
               href="/register"
               className="text-sm bg-black text-white border border-black hover:bg-white hover:text-black py-2 px-2 rounded-3xl"
@@ -90,7 +90,7 @@ export default async function  Home() {
           <p className="text-gray-600 my-5 leading-[1.25rem] lg:leading-[1.5rem] text-base lg:text-lg w-full lg:w-[80%]">
             {`ReFlow Technologies is a leading provider of Industrial IoT solutions that help industries optimize their operations and reduce costs. Our cutting-edge products and services are designed to enhance efficiency, safety, and sustainability across various sectors.`}
           </p>
-          <div className="flex items-center h-[20%] mx-4">
+          <div className="flex items-center h-[20%] ">
             <Link
               href="/register"
               className="text-sm bg-black text-white border border-black hover:bg-white hover:text-black py-2 px-2 rounded-3xl"

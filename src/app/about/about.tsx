@@ -12,7 +12,7 @@ function About() {
                 Cras tincidunt lobortis feugiat vivamus at morbi leo urna molestie atole elementum eu facilisis faucibus interdum posuere.
               </p>
             </div>
-            <Link href={"/contact"} className="bg-black text-white py-2 px-4 rounded-full">Contact Us</Link>
+            <Link href={"/contact"} className="bg-black border hover:bg-white hover:text-black hover:border-black text-white py-2 px-4 rounded-full">Contact Us</Link>
           </div>
           <div className="h-full w-full p-[5rem] flex justify-end">
             <div className="bg-[url('/placeholder.webp')] bg-cover bg-center h-64 lg:h-96 w-full lg:w-1/2 rounded-3xl mt-8 lg:mt-0"></div>

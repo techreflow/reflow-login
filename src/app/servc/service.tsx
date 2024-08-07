@@ -17,7 +17,7 @@ const LandingPage: React.FC = () => {
           cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
         <div className='flex justify-center h-[85%] w-full mt-7 '>
-          <img className='w-full max-w-4xl rounded-2xl' src="/dashbd.png" alt="Dashboard Placeholder" />
+          <Image width={300} height={300} className='w-full max-w-4xl rounded-2xl' src="/dashbd.png" alt="Dashboard Placeholder" />
         </div>
       </div>
 
@@ -32,7 +32,7 @@ const LandingPage: React.FC = () => {
             No expensive integrators, no custom development, no physical configuration. Finally, the production monitoring and analytics platform you deserve.
           </p>
           
-          <div className="flex items-center h-[30%] mx-4">
+          <div className="flex items-center h-[30%] ">
             <Link
               href="/login"
               className="text-sm bg-black text-white border border-black hover:bg-white hover:text-black py-2 px-2 rounded-3xl"
@@ -41,7 +41,8 @@ const LandingPage: React.FC = () => {
         </div>
           
         </div>
-        <div className="bg-[url('/graph.png')] bg-contain h-[50%] lg:h-[50%] rounded-3xl mx-8 mr-[2rem] lg:mr-[5rem] w-full lg:w-[35%]">
+        <div className="h-[50%] lg:h-[50%] rounded-3xl mx-8 mr-[2rem] lg:mr-[5rem] w-full lg:w-[35%]">
+          <Image  width={400} height={300} src="/graph.png" alt="graph" />
         </div>
       </section>
 
