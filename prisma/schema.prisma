@@ -7,6 +7,13 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model Contact {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  name    String
+  email   String
+  message String
+}
+
 // Organization Model
 model Organization {
   id         String @id @default(auto()) @map("_id") @db.ObjectId

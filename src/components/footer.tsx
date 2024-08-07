@@ -15,16 +15,16 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-white text-lg mb-4">Company</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white">About Us</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Contact Us</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Terms & Condition</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Support Us</a></li>
+              <li><a href="/about" className="text-gray-400 hover:text-white">About Us</a></li>
+              <li><a href="/contact" className="text-gray-400 hover:text-white">Contact Us</a></li>
+              <li><a href="/about" className="text-gray-400 hover:text-white">Terms & Condition</a></li>
+              <li><a href="/login" className="text-gray-400 hover:text-white">Support Us</a></li>
             </ul>
           </div>
           <div>
             <h3 className="text-white text-lg mb-4">Products</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white">Alpha X Series</a></li>
+              <li><a href="#products" className="text-gray-400 hover:text-white">Alpha X Series</a></li>
               {/* <li><a href="#" className="text-gray-400 hover:text-white">Alpha X Series</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white">Alpha X Series</a></li> */}
             </ul>

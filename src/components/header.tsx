@@ -34,16 +34,16 @@ export default async function Header() {
           <Link href="/#home" className='group text-gray-600 transition-all duration-300 ease-in-out'>
             <p className="bg-left-bottom bg-gradient-to-r from-sky-500 to-sky-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Home</p>
           </Link>
-          <Link href="/#about" className='group text-gray-600 transition-all duration-300 ease-in-out'>
+          <Link href="/about" className='group text-gray-600 transition-all duration-300 ease-in-out'>
             <p className="bg-left-bottom bg-gradient-to-r from-sky-500 to-sky-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">About Us</p>
           </Link>
           <Link href="/#products" className='group text-gray-600 transition-all duration-300 ease-in-out'>
             <p className="bg-left-bottom bg-gradient-to-r from-sky-500 to-sky-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Products</p>
           </Link>
-          <Link href="/#services" className='group text-gray-600 transition-all duration-300 ease-in-out'>
+          <Link href="/servc" className='group text-gray-600 transition-all duration-300 ease-in-out'>
             <p className="bg-left-bottom bg-gradient-to-r from-sky-500 to-sky-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Services</p>
           </Link>
-          <Link href="/#" className='group text-gray-600 transition-all duration-300 ease-in-out'>
+          <Link href="/contact" className='group text-gray-600 transition-all duration-300 ease-in-out'>
             <p className="bg-left-bottom bg-gradient-to-r from-sky-500 to-sky-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Contact Us</p>
           </Link>
         </nav>
