@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Label } from "@/components/ui/labelLogin";
 import { Input } from "@/components/ui/InputLogin";
+import Image from "next/image";
 
 interface FormData {
   name: string;
@@ -114,7 +115,7 @@ const Contact: React.FC = () => {
 
         <div className="w-full lg:w-[40%] text-black h-[80vh] flex flex-col justify-center items-center">
       
-          <img src="/map.png" alt="Map" className="h-96 w-auto" />
+          <Image width={300} height={300} src="/map.png" alt="Map" className="h-96 w-auto" />
         </div>
       </div>
 
