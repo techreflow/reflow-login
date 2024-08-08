@@ -15,7 +15,7 @@ const Products: React.FC = () => {
         </p>
         <div className="flex items-center h-[30%]">
           <Link
-            href="/#products"
+            href="/login"
             className="text-sm bg-white text-black border border-black hover:bg-black hover:text-white py-2 px-2 rounded-3xl"
           >{`view more >`}</Link>
         </div>

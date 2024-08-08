@@ -9,12 +9,18 @@ const LandingPage: React.FC = () => {
       <div className="p-[4rem] h-[70vh] mb-[5rem]">
         <h1 className="text-black font-bold tracking-wide text-4xl">Dashboard</h1>
         <p className="text-gray-600 text-sm mt-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        ReFlow Technologies offers an advanced IoT dashboard that provides comprehensive real-time insights into your industrial processes. Our intuitive interface is designed to empower you with data-driven decision-making, enabling you to monitor key performance indicators, track efficiency, and optimize operations with ease.
+
+
         </p>
         <p className="text-gray-600 text-sm mt-4">
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
-          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+       {`With a focus on usability and functionality, our dashboard integrates seamlessly with your existing systems, offering customizable views and detailed analytics. Whether you’re tracking power consumption, monitoring environmental conditions, or analyzing production efficiency, ReFlow’s dashboard brings all the essential information to your fingertips.`}
+
+
+
+
+
+
         </p>
         <div className='flex justify-center h-[85%] w-full mt-7 '>
           <Image width={300} height={300} className='w-full max-w-4xl rounded-2xl' src="/dashbd.png" alt="Dashboard Placeholder" />
@@ -26,10 +32,10 @@ const LandingPage: React.FC = () => {
         <div className="flex flex-col h-full w-full lg:w-[45%] text-black m-7 ml-9 p-8">
           <h1 className="text-2xl lg:text-4xl font-semibold">AI Analytics</h1>
           <p className="text-gray-600 text-sm mt-5  lg:text-sm w-full lg:w-[90%]">
-            Use data to increase yield, make production faster, and cheaper with fewer resources than ever before. ReFlowMetrics -- Capture and analyse real-time data from your production to deliver actionable insights to drive the decisions that matter.
+          Transform your operations with advanced AI tools that convert complex data into actionable insights. Optimize processes, reduce waste, and boost productivity with predictive analytics and AI-driven recommendations tailored to your industry. Achieve greater accuracy and efficiency, ensuring smooth and profitable operations.
           </p>
           <p className="text-gray-600 text-sm my-5    lg:text-sm w-full lg:w-[90%]">
-            No expensive integrators, no custom development, no physical configuration. Finally, the production monitoring and analytics platform you deserve.
+          Leverage cutting-edge machine learning to gain deep insights into operational trends and equipment performance. Proactively address issues, streamline workflows, and enhance decision-making to drive efficiency and profitability in your operations.
           </p>
           
           <div className="flex items-center h-[30%] ">
