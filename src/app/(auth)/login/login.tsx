@@ -121,7 +121,7 @@ export function Login() {
               >
                 {loading ? "Logging in..." : `Login ->`}
               </button>
-              <a href="/forgot-password" className="text-black hover:underline">Forgot Password?</a>
+              <a href="/reset-password" className="text-black hover:underline">Forgot Password?</a>
             </form>
           </div>
         </div>

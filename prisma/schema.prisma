@@ -51,4 +51,13 @@ model User {
   organization         Organization? @relation(name: "OrganizationUsers", fields: [organizationId], references: [id], onDelete: NoAction, onUpdate: NoAction)
   organizationId       String? @db.ObjectId
   rootOrganization     Organization? @relation(name: "RootUser")
+  PasswordResetToken PasswordResetToken []
+}
+model PasswordResetToken{
+id String @id @default(auto()) @map("_id") @db.ObjectId
+token String @unique
+createdAt DateTime @default(now())
+resetAt   DateTime
+user User?  @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+userId String? @db.ObjectId
 }
