@@ -11,7 +11,7 @@ export function VerificationEmail({ firstName, otp }: VerificationEmailProps) {
   return (
     <Html lang="en" dir="ltr">
       <head>
-        <title>Verification code</title>
+        <title>Welcome to Reflow</title>
         <Font
         fontFamily='Roboto'
         fallbackFontFamily="Verdana"
@@ -23,13 +23,13 @@ export function VerificationEmail({ firstName, otp }: VerificationEmailProps) {
         fontStyle='normal'
         />
         </head>
-        <Preview>Here&appo;s your verification code</Preview>
+        <Preview>Welcome to reflow</Preview>
         <Section>
           <Row>
             <Heading as="h2">Hello {firstName}</Heading>
           </Row>
           <Row>
-            <Text>Your verification code is: {otp}</Text>
+            <Text>Thank you for signing up. We are excited to have you on board as we embark on this journey together to make sensor data analysis simple, efficient, and insightful.</Text>
           </Row>
         </Section>
     </Html>
