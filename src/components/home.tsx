@@ -103,17 +103,11 @@ export default async function  Home() {
     </div>
   </div>
 
-  <div className="relative h-[45%] w-full lg:w-[25%] m-3 mr-[2rem] rounded-3xl overflow-hidden">
-    <Image
-      src="/founder11.jpeg"
-      alt="Founder Image 1"
-      layout="fill"
-      objectFit="cover"
-      className="rounded-3xl"
-    />
+  <div className="relative h-[50%] w-full lg:w-[25%] m-3 mr-[2rem] rounded-3xl overflow-hidden">
+    <img src="founder21.jpeg" alt="" />
   </div>
 
-  <div className="relative h-[45%] w-full lg:w-[25%] m-3 mr-[2rem] rounded-3xl ">
+  <div className="relative h-[50%] w-full lg:w-[25%] m-3 mr-[2rem] rounded-3xl ">
     <Image
       src="/founder13.jpeg"
       alt="Founder Image 2"
