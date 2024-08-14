@@ -26,10 +26,10 @@ export default function FAQ() {
 
   return (
     <div className="bg-white flex flex-col w-full justify-center items-center px-4">
-      <h1 className="text-black text-4xl mt-9 mb-4">Frequently Asked Questions</h1>
-      <div className="w-full max-w-2xl mb-6">
+      <h1 className="text-black font-semibold text-4xl mt-9 mb-4">Frequently Asked Questions</h1>
+      <div className="w-full max-w-5xl mb-6">
         {questions.map((q, index) => (
-          <div key={index} className="border-t border-gray-300 py-4">
+          <div key={index} className="border-t border-gray-300 py-[1.5rem]">
             <div className="flex justify-between items-center">
               <h2 className="text-lg font-semibold text-gray-700">{q}</h2>
               <button 
@@ -40,7 +40,7 @@ export default function FAQ() {
               </button>
             </div>
             {openIndex === index && (
-              <p className="text-gray-700 mt-2">{answers[index]}</p>
+              <p className="text-gray-700 mt-4">{answers[index]}</p>
             )}
           </div>
         ))}

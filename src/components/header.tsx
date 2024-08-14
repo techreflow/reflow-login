@@ -1,10 +1,7 @@
 import Link from 'next/link';
-import { cn } from "@/utils/cn";
-import { auth, signOut } from '@/auth';
-import { redirect } from 'next/navigation';
-import { set } from 'mongoose';
+import Image from "next/image";
+import { auth } from '@/auth';
 import { doSignOut } from "../app/actions/help";
-import { SidebarDemo } from './SidebarDemo';
 
 export function SignOut() {
   return (
@@ -21,36 +18,40 @@ export default async function Header() {
     flag = true;
   }
   return (
-    <header className="bg-white p-4 shadow-sm border-b-[1px]">
+    <header className="w-[1512px  h-[118px] bg-white border border-solid border-neutral-300">
       <div className="container mx-auto flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <div className="text-lg">
-            <Link href="/" className="font-bold text-2xl text-sky-500">Re</Link>
-            <Link href="/" className="font-bold text-2xl text-black">Flow Tech <sup className='text-gray-600 text-sm'>TM</sup></Link>
-          </div>
+        <div className="flex items-center mb-6 ">
+          <Image 
+            src="/translogo.png" 
+            alt="Logo" 
+            width={237} 
+            height={68}
+            className='mt-[25px] self-center' 
+          />
+      
         </div>
 
-        <nav className="hidden lg:flex space-x-6">
-          <Link href="/#home" className='group text-gray-600 transition-all duration-300 ease-in-out'>
-            <p className="bg-left-bottom bg-gradient-to-r from-sky-500 to-sky-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Home</p>
+        <nav className="hidden lg:flex lg:items-center  text-xl justify-end space-x-[30px] ">
+          <Link href="/#home" className='group text-[#1d1d1d] transition-all duration-300 ease-in-out'>
+            <p className="bg-left-bottom bg-gradient-to-r from-[#00afef] to-[#00afef] bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Home</p>
           </Link>
-          <Link href="/about" className='group text-gray-600 transition-all duration-300 ease-in-out'>
-            <p className="bg-left-bottom bg-gradient-to-r from-sky-500 to-sky-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">About Us</p>
+          <Link href="/about" className='group text-[#1d1d1d] transition-all duration-300 ease-in-out'>
+            <p className="bg-left-bottom bg-gradient-to-r from-[#00afef] to-[#00afef] bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">About Us</p>
           </Link>
-          <Link href="/#products" className='group text-gray-600 transition-all duration-300 ease-in-out'>
-            <p className="bg-left-bottom bg-gradient-to-r from-sky-500 to-sky-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Products</p>
+          <Link href="/#products" className='group text-[#1d1d1d] transition-all duration-300 ease-in-out'>
+            <p className="bg-left-bottom bg-gradient-to-r from-[#00afef] to-[#00afef] bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Products</p>
           </Link>
-          <Link href="/servc" className='group text-gray-600 transition-all duration-300 ease-in-out'>
-            <p className="bg-left-bottom bg-gradient-to-r from-sky-500 to-sky-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Services</p>
+          <Link href="/servc" className='group text-[#1d1d1d] transition-all duration-300 ease-in-out'>
+            <p className="bg-left-bottom bg-gradient-to-r from-[#00afef] to-[#00afef] bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Services</p>
           </Link>
-          <Link href="/contact" className='group text-gray-600 transition-all duration-300 ease-in-out'>
-            <p className="bg-left-bottom bg-gradient-to-r from-sky-500 to-sky-500 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Contact Us</p>
+          <Link href="/contact" className='group text-[#1d1d1d] transition-all duration-300 ease-in-out'>
+            <p className="bg-left-bottom bg-gradient-to-r from-[#00afef] to-[#00afef] bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">Contact Us</p>
           </Link>
         </nav>
 
-        <div className="flex items-center justify-evenly space-x-4">
-          {flag ? <SignOut /> : <a href="/login" className="text-white bg-black py-2 px-5 rounded-3xl hover:text-black hover:bg-white hover:border-black hover:border text-sm lg:text-base">Login</a>}
-          {flag ? null : <Link href="/register" className="bg-white text-black border border-black hover:bg-black hover:text-white py-2 px-4 rounded-3xl text-sm lg:text-base">Register</Link>}
+        <div className="flex items-center justify-evenly space-x-[30px]  ">
+          {flag ? <SignOut /> : <a href="/login" className="text-[#1d1d1d] bg-white py-3 px-6 rounded-3xl border border-[#1d1d1d] hover:bg-[#1d1d1d] hover:text-white text-sm lg:text-base">Login</a>}
+          {flag ? null : <Link href="/register" className="bg-white text-[#1d1d1d] border border-[#1d1d1d] hover:bg-[#1d1d1d] hover:text-white py-3 px-6 rounded-3xl text-sm lg:text-base">Register</Link>}
         </div>
       </div>
     </header>

@@ -2,44 +2,36 @@ import React from "react";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-black text-white py-8">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-start md:items-center">
-        <div className="flex flex-col items-center md:items-start mb-8 md:mb-0">
-          <img src="/lname.png" alt="ReFlow Logo" className="w-32 mb-4" />
-          <div className="flex flex-col md:flex-row items-center">
-            <span className="font-bold text-xl text-sky-500">Re</span>
-            <span className="font-bold text-xl text-white">Flow Tech</span>
-          </div>
+    <footer className="bg-black my-[4rem] text-white py-1">
+      <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="flex flex-col justify-start items-start"> {/* Updated this line */}
+          <img src="/invertedlname.png" alt="ReFlow Logo" className="h-[150px] w-[200px]" />
         </div>
-        <div className="flex flex-col md:flex-row justify-between w-full md:w-auto space-y-8 md:space-y-0 md:space-x-16">
-          <div>
-            <h3 className="text-white text-lg mb-4">Company</h3>
-            <ul className="space-y-2">
-              <li><a href="/about" className="text-gray-400 hover:text-white">About Us</a></li>
-              <li><a href="/contact" className="text-gray-400 hover:text-white">Contact Us</a></li>
-              <li><a href="/about" className="text-gray-400 hover:text-white">Terms & Condition</a></li>
-              <li><a href="/login" className="text-gray-400 hover:text-white">Support Us</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-white text-lg mb-4">Products</h3>
-            <ul className="space-y-2">
-              <li><a href="#products" className="text-gray-400 hover:text-white">Alpha X Series</a></li>
-              {/* <li><a href="#" className="text-gray-400 hover:text-white">Alpha X Series</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white">Alpha X Series</a></li> */}
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-white text-lg mb-4">Platform</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white">Dashboard</a></li>
-            </ul>
-          </div>
+        <div>
+          <h3 className="text-white text-lg mb-4">Company</h3>
+          <ul className="space-y-2">
+            <li><a href="/about" className="text-gray-400 hover:text-white">About Us</a></li>
+            <li><a href="/contact" className="text-gray-400 hover:text-white">Contact Us</a></li>
+            <li><a href="/about" className="text-gray-400 hover:text-white">Terms & Condition</a></li>
+            <li><a href="/login" className="text-gray-400 hover:text-white">Support Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-white text-lg mb-4">Products</h3>
+          <ul className="space-y-2">
+            <li><a href="#products" className="text-gray-400 hover:text-white">Alpha X Series</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 className="text-white text-lg mb-4">Platform</h3>
+          <ul className="space-y-2">
+            <li><a href="#" className="text-gray-400 hover:text-white">Dashboard</a></li>
+          </ul>
         </div>
       </div>
-      <div className="container mx-auto px-4 mt-8 border-t border-gray-700 pt-4 text-center text-gray-400">
+      <div className="container mx-auto px-4 mt-[5rem] border-t border-gray-700 pt-4 text-start text-gray-400">
         <p className="text-sm">
-          Copyright © 2024 Re Flow | All Rights Reserved | <a href="#" className="hover:text-white">Terms and Conditions</a> | <a href="#" className="hover:text-white">Privacy Policy</a>
+          Copyright © 2024 ReFlow Technologies Pvt Ltd | All Rights Reserved | <a href="#" className="hover:text-white">Terms and Conditions</a> | <a href="#" className="hover:text-white">Privacy Policy</a>
         </p>
       </div>
     </footer>
@@ -47,6 +39,9 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
+
+
+
 
 
 
