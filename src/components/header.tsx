@@ -18,7 +18,7 @@ export default async function Header() {
     flag = true;
   }
   return (
-    <header className="w-[1512px  h-[118px] bg-white border border-solid border-neutral-300">
+    <header className="w-[100vw]  h-[118px] bg-white border border-solid border-neutral-300">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex items-center mb-6 ">
           <Image 

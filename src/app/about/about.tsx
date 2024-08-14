@@ -42,13 +42,13 @@ function About() {
         <div className="flex flex-col h-full w-full lg:w-1/2 text-black p-8 lg:p-16">
           <h1 className="text-2xl lg:text-4xl font-semibold">Our Founders</h1>
          <h3 className="text-xl lg:text-2xl mt-3">Chakreesh</h3>
-         <p className="text-slate-500">CE0 and founder</p>
+         <p className="text-slate-500">CEO and Founder</p>
 
           <p className="text-gray-600 my-2 leading-6 lg:leading-7 text-base lg:text-lg">
            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt error sequi nihil aspernatur repellat quod consequuntur cupiditate, laborum autem ad impedit, sed nam ea quidem numquam explicabo adipisci a cum.
           </p>
           <h3 className="text-xl lg:text-2xl mt-3">Rajkumar</h3>
-          <p className="text-gray-500">CT0 and founder</p>
+          <p className="text-gray-500">CTO and Founder</p>
           <p className="text-gray-600 my-2 leading-6 lg:leading-7 text-base lg:text-lg">
            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem, ad. Maxime veritatis dolores illo vero deleniti. Esse facilis eius nam nobis? Mollitia at dicta, error facere accusamus harum a veniam!
           </p>
