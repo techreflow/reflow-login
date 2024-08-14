@@ -23,7 +23,7 @@ const LandingPage: React.FC = () => {
 
         </p>
         <div className='flex justify-center h-[85%] w-full mt-7 '>
-          <Image width={300} height={300} className='w-full max-w-4xl rounded-2xl' src="/newdash.png" alt="Dashboard Placeholder" />
+        <img src="/newdash.png" alt="Table" className="rounded-3xl h-[350px] w-[700px]" />
         </div>
       </div>
 
