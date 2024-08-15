@@ -247,7 +247,7 @@ const Loggedin: React.FC =  () => {
         ) : (
           null
         )}
-        {session?.user ? working? <p className='text-2xl'>site in progress</p> :<Dashboard/> : <p className='text-2xl'>Not logged in</p>}
+        {session?.user ? working? <p className='text-2xl'>site in progress</p> :<Dashboard/> : <p className='text-2xl'>Loading...</p>}
       
     </div>
   );
