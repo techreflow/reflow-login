@@ -18,7 +18,7 @@ const Contact: React.FC = () => {
   const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission
     setLoading(true);
 
     if (!formData.name || !formData.email || !formData.message) {

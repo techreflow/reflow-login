@@ -2,7 +2,7 @@
 
 import { db } from "@/lib/db";
 import bcrypt from "bcryptjs";
-import { sendVerificationEmail } from "@/helpers/sendVerificationEmail";
+import { sendVerificationEmail } from "@/helpers/sendVerificationEmail"; 
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {

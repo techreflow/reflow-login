@@ -22,7 +22,7 @@ const Products: React.FC = () => {
         </p>
         <div className="flex items-center h-[30%]">
           <Link
-            href="/login"
+            href="/servc"
             className="text-sm bg-white text-black border border-black hover:bg-black hover:text-white py-3 px-7  rounded-3xl"
           >{`View More`} </Link>
         </div>

@@ -20,7 +20,7 @@ export default async function Home() {
           <span className="inline-block">Efficiency with Automation</span>
 
           <div className="text-base lg:text-lg text-gray-800 my-[50px] leading-[1.25rem] lg:leading-[1.5rem] font-normal">
-            <span className="inline-block">Achieve Zero Downtime, Zero Injuries, and{" "}</span>
+            <span className="inline-block">Achieve Zero Downtime, Zero Injuries, and{"   "}</span>
             <span className="inline-block">{`Zero Financial Losses with Reflow's`}{" "}</span>
             <span className="inline-block">Cutting-Edge Control Systems </span>
           </div>
@@ -42,7 +42,7 @@ export default async function Home() {
                 </Link>
 
                 <Link
-                  href="/#products"
+                  href="/servc"
                   className="bg-white text-black border border-black hover:bg-black hover:text-white py-3.5 px-6 rounded-3xl"
                 >
                   Explore
@@ -64,12 +64,12 @@ export default async function Home() {
       >
         <div className="flex flex-col h-full w-full justify-center lg:w-[35%] text-white m-7 mt-[5rem] ml-9 p-8">
           <h1 className="text-2xl lg:text-4xl font-semibold">Services</h1>
-          <p className="text-gray-600 mt-5 leading-[1.25rem] lg:leading-[1.5rem] text-base lg:text-lg w-full lg:w-[90%]">
+          <p className="text-black mt-5 leading-[1.25rem] lg:leading-[1.8rem] text-base lg:text-lg w-full lg:w-[95%]">
             Use data to increase yield, make production faster, and cheaper with fewer resources than ever before.
             ReFlowMetrics, Capture and analyse real-time data from your production to deliver actionable insights to
             drive the decisions that matter.
           </p>
-          <p className="text-white my-5 font-semibold leading-[1.25rem] lg:leading-[1.5rem] text-base lg:text-lg w-full lg:w-[90%]">
+          <p className="text-black my-5  leading-[1.25rem] lg:leading-[1.8rem] text-base lg:text-lg w-full lg:w-[95%]">
             No expensive integrators, no custom development, no physical configuration. Finally, the production
             monitoring and analytics platform you deserve.
           </p>

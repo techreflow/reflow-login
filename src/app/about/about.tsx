@@ -20,7 +20,7 @@ function About() {
             </Link>
           </div>
           <div className="h-full w-full lg:w-1/2 p-8 flex justify-center lg:justify-end">
-            <div className="bg-cover bg-center h-64 lg:h-96 w-full lg:w-[90%] rounded-3xl mt-8 lg:mt-0">
+            <div className="bg-cover border bg-center h-64 lg:h-96 w-full lg:w-[90%] rounded-3xl mt-8 lg:mt-0">
               <img src="/lname.png" alt="About Us" className="rounded-3xl h-full w-full bg-center object-cover" />
             </div>
           </div>
@@ -28,7 +28,7 @@ function About() {
       </section>
       
       <section id="aboutus" className="w-full flex flex-col lg:flex-row bg-white items-center justify-between py-8 lg:py-20">
-        <div className="relative h-64 lg:h-96 w-full lg:w-[50%] m-3 lg:m-8 rounded-3xl">
+        <div className="relative h-64 lg:h-96 border w-full lg:w-[50%] m-3 lg:m-8 rounded-3xl">
           <Image
             src="/lastimage.jpeg"
             alt="Founder Image 2"
