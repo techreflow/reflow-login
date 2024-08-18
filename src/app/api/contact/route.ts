@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
   try {
     const { name, email, message } = await req.json();
 
-    // Optimize database operation with connection pooling or optimized queries
+   
     const contactPromise = db.contact.create({
       data: {
         name,
@@ -16,17 +16,21 @@ export async function POST(req: NextRequest) {
     });
 
     // Nodemailer configuration
-    const transporter = nodemailer.createTransport({
-      service: "Gmail",
+  
+
+    const transporter2 = nodemailer.createTransport({
+      host: 'smtp.zoho.in',
+      port: 465,
+      secure: true, // use SSL
       auth: {
-        user: process.env.NEXT_PUBLIC_EMAIL_USER,
-        pass: process.env.NEXT_PUBLIC_EMAIL_PASS,
-      },
-    });
+          user: `contact@reflowtech.in`,
+          pass: process.env.NEXT_PUBLIC_EMAIL_PASS2,
+      }
+  });
 
     // Concurrent email sending to speed up the process
-    const userMailPromise = transporter.sendMail({
-      from: process.env.EMAIL_USER,
+    const userMailPromise = transporter2.sendMail({
+      from: `contact@reflowtech.in`,
       to: email,
       subject: "Thank you for contacting ReflowTech",
       html: `
@@ -39,9 +43,9 @@ export async function POST(req: NextRequest) {
       `,
     });
 
-    const adminMailPromise = transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: `hello@reflowtech.in`,
+    const adminMailPromise = transporter2.sendMail({
+      from: `contact@reflowtech.in`,
+      to: `contact@reflowtech.in`,
       subject: "Contact Query",
       html: `
         <p><strong>Contact Query:</strong> ${message}</p>

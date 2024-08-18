@@ -39,16 +39,18 @@ export async function POST(req: NextRequest) {
 
     // Setup nodemailer transport
     const transporter = nodemailer.createTransport({
-      service: "Gmail",
+      host: 'smtp.zoho.in',
+      port: 465,
+      secure: true, // use SSL
       auth: {
-        user: process.env.NEXT_PUBLIC_EMAIL_USER,
-        pass: process.env.NEXT_PUBLIC_EMAIL_PASS,
-      },
-    });
+          user: `hello@reflowtech.in`,
+          pass: process.env.NEXT_PUBLIC_EMAIL_PASS3,
+      }
+  });
 
     // Send email with OTP
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
+      from: `hello@reflowtech.in`,
       to: email,
       subject: "Password Reset OTP",
       text: `Your OTP for password reset is ${otp}. It is valid for 15 minutes.`,
