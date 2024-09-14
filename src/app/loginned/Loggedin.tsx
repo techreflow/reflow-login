@@ -1,17 +1,16 @@
-"use client"
-import { auth } from '@/auth';
-import { doSignOut, toProtect } from '../actions/help';
-import { signOut } from '@/auth';
-import { useEffect, useState } from 'react';
-import { signOutBtnFn,getAuth } from '../actions/help';
-import ChartComponent from './ChartComponent';
+"use client";
+import { auth } from "@/auth";
+import { doSignOut, toProtect } from "../actions/help";
+import { signOut } from "@/auth";
+import { useEffect, useState } from "react";
+import { signOutBtnFn, getAuth } from "../actions/help";
+import ChartComponent from "./ChartComponent";
 import { useSession, signIn } from "next-auth/react";
-
-import {useRouter,redirect} from 'next/navigation';
-
+import { useRouter, redirect } from "next/navigation";
+import { getCookie } from "../actions/help";
+import Cookies from "js-cookie";
 
 // pages/dashboard.tsx
-
 
 interface SensorDevice {
   id: number;
@@ -32,9 +31,11 @@ interface ChartData {
 }
 
 export const Dashboard: React.FC = () => {
-  const [selectedDevice, setSelectedDevice] = useState<SensorDevice | null>(null);
+  const [selectedDevice, setSelectedDevice] = useState<SensorDevice | null>(
+    null
+  );
   const [sensorReadings, setSensorReadings] = useState<SensorReading[]>([]);
-  
+
   const [chartData, setChartData] = useState<ChartData>({
     labels: [],
     temperatures: [],
@@ -42,32 +43,70 @@ export const Dashboard: React.FC = () => {
 
   // Mock data for sensor devices
   const sensorDevices: SensorDevice[] = [
-    { id: 1, name: 'Sensor Device 1' },
-    { id: 2, name: 'Sensor Device 2' },
-    { id: 3, name: 'Sensor Device 3' },
+    { id: 1, name: "Sensor Device 1" },
+    { id: 2, name: "Sensor Device 2" },
+    { id: 3, name: "Sensor Device 3" },
   ];
 
   // Mock data for sensor readings (replace with actual API fetch in real scenario)
   const mockSensorReadings: SensorReading[] = [
-    { id: 1, deviceId: 1, timestamp: '2024-07-16T12:00:00Z', temperature: 25.5, humidity: 60 },
-    { id: 2, deviceId: 1, timestamp: '2024-07-16T12:15:00Z', temperature: 26.0, humidity: 62 },
-    { id: 3, deviceId: 2, timestamp: '2024-07-16T12:00:00Z', temperature: 23.8, humidity: 58 },
-    { id: 4, deviceId: 2, timestamp: '2024-07-16T12:15:00Z', temperature: 24.2, humidity: 59 },
-    { id: 5, deviceId: 3, timestamp: '2024-07-16T12:00:00Z', temperature: 24.7, humidity: 61 },
-    { id: 6, deviceId: 3, timestamp: '2024-07-16T12:15:00Z', temperature: 25.0, humidity: 63 },
+    {
+      id: 1,
+      deviceId: 1,
+      timestamp: "2024-07-16T12:00:00Z",
+      temperature: 25.5,
+      humidity: 60,
+    },
+    {
+      id: 2,
+      deviceId: 1,
+      timestamp: "2024-07-16T12:15:00Z",
+      temperature: 26.0,
+      humidity: 62,
+    },
+    {
+      id: 3,
+      deviceId: 2,
+      timestamp: "2024-07-16T12:00:00Z",
+      temperature: 23.8,
+      humidity: 58,
+    },
+    {
+      id: 4,
+      deviceId: 2,
+      timestamp: "2024-07-16T12:15:00Z",
+      temperature: 24.2,
+      humidity: 59,
+    },
+    {
+      id: 5,
+      deviceId: 3,
+      timestamp: "2024-07-16T12:00:00Z",
+      temperature: 24.7,
+      humidity: 61,
+    },
+    {
+      id: 6,
+      deviceId: 3,
+      timestamp: "2024-07-16T12:15:00Z",
+      temperature: 25.0,
+      humidity: 63,
+    },
   ];
 
   const handleDeviceChange = (deviceId: number) => {
-    const device = sensorDevices.find(device => device.id === deviceId);
+    const device = sensorDevices.find((device) => device.id === deviceId);
     if (device) {
       setSelectedDevice(device);
       // Filter mock sensor readings for selected device
-      const readings = mockSensorReadings.filter(reading => reading.deviceId === deviceId);
+      const readings = mockSensorReadings.filter(
+        (reading) => reading.deviceId === deviceId
+      );
       setSensorReadings(readings);
 
       // Prepare chart data
-      const labels = readings.map(reading => reading.timestamp);
-      const temperatures = readings.map(reading => reading.temperature);
+      const labels = readings.map((reading) => reading.timestamp);
+      const temperatures = readings.map((reading) => reading.temperature);
 
       setChartData({
         labels,
@@ -77,21 +116,22 @@ export const Dashboard: React.FC = () => {
   };
 
   return (
-    
-
     <div className="flex flex-col justify-center items-center min-h-screen w-full bg-white text-black">
       <div className="p-8 rounded-lg shadow-lg text-center w-full max-w-screen-xl">
         <h1 className="text-2xl font-bold mb-4">Sensor Dashboard</h1>
         <div className="mb-4">
           <label className="mr-2">Select Device:</label>
           <select
+            title="Select Device"
             className="bg-white px-4 py-2 rounded-md shadow"
-            value={selectedDevice ? selectedDevice.id.toString() : ''}
+            value={selectedDevice ? selectedDevice.id.toString() : ""}
             onChange={(e) => handleDeviceChange(parseInt(e.target.value))}
           >
             <option value="">Select a device...</option>
-            {sensorDevices.map(device => (
-              <option key={device.id} value={device.id.toString()}>{device.name}</option>
+            {sensorDevices.map((device) => (
+              <option key={device.id} value={device.id.toString()}>
+                {device.name}
+              </option>
             ))}
           </select>
         </div>
@@ -121,10 +161,12 @@ export const Dashboard: React.FC = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {sensorReadings.map(reading => (
+                    {sensorReadings.map((reading) => (
                       <tr key={reading.id}>
                         <td className="py-2">{reading.timestamp}</td>
-                        <td className="py-2">{reading.temperature.toFixed(1)}</td>
+                        <td className="py-2">
+                          {reading.temperature.toFixed(1)}
+                        </td>
                         <td className="py-2">{reading.humidity.toFixed(1)}</td>
                       </tr>
                     ))}
@@ -139,17 +181,6 @@ export const Dashboard: React.FC = () => {
   );
 };
 
-
-
-
-
-
-
-
-
-
-
-
 interface User {
   firstName: string;
   lastName: string;
@@ -157,42 +188,30 @@ interface User {
   isVerified: boolean;
 }
 
-
-export function SignOut()
-{
-
-  return(
+export function SignOut() {
+  return (
     <form action={signOutBtnFn}>
-     <button type="submit"> sign Out</button>
+      <button type="submit"> sign Out</button>
     </form>
-  )
+  );
 }
 
-
-
-
-const Loggedin: React.FC =  () => {
+const Loggedin: React.FC = () => {
   const session2 = useSession();
-  if(!(session2)){
+  if (!session2) {
     redirect("/login");
   }
 
+  const [signOutUser, setSignOutUser] = useState<boolean>();
 
+  const router = useRouter();
+  const [session, setSession] = useState<any>("");
 
- 
-
-  const [signOutUser,setSignOutUser]=useState<boolean>();
-
-  const router=useRouter();
-  const [session,setSession]=useState<any>("");
-
-
-  
-  const prompt="say hello to all";
+  const prompt = "say hello to all";
   // const [output,setOutput]=useState<string>("aam khata hai");
   // let output="aam khata hai kya nhi na";
-  const [user,setUser]=useState<User | null>(null);
-  const [working,setWorking]=useState("false")
+  const [user, setUser] = useState<User | null>(null);
+  const [working, setWorking] = useState("false");
 
   // const generateText=async()=>{
   //   try{
@@ -211,44 +230,50 @@ const Loggedin: React.FC =  () => {
   //     console.log(e);
   // }}
 
-
-  
   useEffect(() => {
-     toProtect();
-      router.refresh();
-      getAuth().then((session) => {
-        setSession(session);
-        setUser(session?.user);
-      });
+    toProtect();
+    router.refresh();
+    getAuth().then((session) => {
+      setSession(session);
+      setUser(session?.user);
+    });
 
     // generate
   }, [router]);
 
-  
-
-   
-  
-
- 
-
- 
-    
- 
-
   // bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900
+  
+  console.log(session);
 
   return (
     <div className="flex flex-col gap-4 justify-center items-center min-h-screen min-w-full bg-white text-black">
       {user ? (
-          <>
-            <h1 className="text-2xl mt-4 font-bold mb-4">Welcome, {user.firstName} {user.lastName}</h1>
-          </>
-          
+        <>
+          <h1 className="text-2xl mt-4 font-bold mb-4">
+            Welcome, {user.firstName} {user.lastName}
+          </h1>
+        </>
+      ) : null}
+      {session?.user ? (
+        working ? (
+          <p className="text-2xl"> site in progress <br /> 
+          <button title="redirect" className="text-white px-5 py-3 bg-black rounded-full" onClick={() => {
+            Cookies.set('key', 'value', {
+              domain: 'reflow-web.vercel.app', // Ensure this matches the domain you're targeting
+              sameSite: 'None',
+              secure: true,
+              expires: 1 // Optional: set expiry in days
+            });
+            console.log('set cookie');
+            router.push("https://reflow-web.vercel.app");
+          }} > Test redirect </button>
+           </p>
         ) : (
-          null
-        )}
-        {session?.user ? working? <p className='text-2xl'>site in progress</p> :<Dashboard/> : <p className='text-2xl'>Loading...</p>}
-      
+          <Dashboard />
+        )
+      ) : (
+        <p className="text-2xl">Loading...</p>
+      )}
     </div>
   );
 };
