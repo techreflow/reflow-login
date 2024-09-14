@@ -261,6 +261,7 @@ const Loggedin: React.FC = () => {
             Cookies.set('key', 'value', {
               domain: 'reflow-web.vercel.app', // Ensure this matches the domain you're targeting
               sameSite: 'None',
+              path: 'https://reflow-web.vercel.app',
               secure: true,
               expires: 1 // Optional: set expiry in days
             });
