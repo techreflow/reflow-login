@@ -8,7 +8,6 @@ import ChartComponent from "./ChartComponent";
 import { useSession, signIn } from "next-auth/react";
 import { useRouter, redirect } from "next/navigation";
 import { getCookie } from "../actions/help";
-import Cookies from "js-cookie";
 
 // pages/dashboard.tsx
 
@@ -258,15 +257,7 @@ const Loggedin: React.FC = () => {
         working ? (
           <p className="text-2xl"> site in progress <br /> 
           <button title="redirect" className="text-white px-5 py-3 bg-black rounded-full" onClick={() => {
-            Cookies.set('key', 'value', {
-              domain: 'reflow-web.vercel.app', // Ensure this matches the domain you're targeting
-              sameSite: 'None',
-              path: 'https://reflow-web.vercel.app',
-              secure: true,
-              expires: 1 // Optional: set expiry in days
-            });
-            console.log('set cookie');
-            router.push("https://reflow-web.vercel.app");
+            router.push("https://reflow-web.vercel.app?username=shubham");
           }} > Test redirect </button>
            </p>
         ) : (
