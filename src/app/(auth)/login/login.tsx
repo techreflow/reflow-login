@@ -2,12 +2,13 @@
 import Image from 'next/image';
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { doSign, toProtectLogin } from "../../actions/help";
+import { doSign, getCookies, toProtectLogin } from "../../actions/help";
 import { getAuth } from "../../actions/help";
 import { useToast } from "@/components/ui/use-toast";
 import { Label } from "../../../components/ui/labelLogin";
 import { Input } from "../../../components/ui/InputLogin";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai"; // Importing icons
+import Cookies from "js-cookie";
 
 interface User {
   firstName: string;
@@ -51,6 +52,9 @@ export function Login() {
     try {
       await doSign(userInfo);
       toast({ title: "Logged In successfully", variant: "default" });
+      const cook = await getCookies();
+      Cookies.set("authToken", cook ?? "");
+      console.log(cook);
       console.log("Form submitted successfully");
     } catch (error) {
       toast({ title: "Invalid credentials", variant: "destructive" });

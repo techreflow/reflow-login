@@ -1,13 +1,13 @@
 "use client";
 import { auth } from "@/auth";
-import { doSignOut, toProtect } from "../actions/help";
+import { doSignOut, getCookies, toProtect } from "../actions/help";
 import { signOut } from "@/auth";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { signOutBtnFn, getAuth } from "../actions/help";
 import ChartComponent from "./ChartComponent";
-import { useSession, signIn } from "next-auth/react";
+import { useSession, signIn, getSession } from "next-auth/react";
 import { useRouter, redirect } from "next/navigation";
-import { getCookie } from "../actions/help";
+import Cookies from "js-cookie";
 
 // pages/dashboard.tsx
 
@@ -241,8 +241,9 @@ const Loggedin: React.FC = () => {
   }, [router]);
 
   // bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900
-  
-  console.log(session);
+  const environment = process.env.NODE_ENV;
+  const local = process.env.LOCAL_DASHBOARD_URL;
+  const dev = process.env.DEV_DASHBOARD_URL;
 
   return (
     <div className="flex flex-col gap-4 justify-center items-center min-h-screen min-w-full bg-white text-black">
@@ -255,11 +256,23 @@ const Loggedin: React.FC = () => {
       ) : null}
       {session?.user ? (
         working ? (
-          <p className="text-2xl"> site in progress <br /> 
-          <button title="redirect" className="text-white px-5 py-3 bg-black rounded-full" onClick={() => {
-            router.push("https://reflow-web.vercel.app?username=shubham");
-          }} > Test redirect </button>
-           </p>
+          <p className="text-2xl">
+            {" "}
+            <button
+              title="redirect"
+              className="text-white px-8 py-4 bg-black rounded-full text-xl font-semibold tracking-wide"
+              onClick={() => {
+                if (environment === "development") {
+                  router.push(`http://localhost:3001?user=${Cookies.get("authToken")}`);
+                } else {
+                  router.push(`https://reflow-web.vercel.app?user=${Cookies.get("authToken")}`);
+                }
+              }}
+            >
+              {" "}
+              Proceed to Dashboard{" "}
+            </button>
+          </p>
         ) : (
           <Dashboard />
         )

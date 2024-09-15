@@ -3,6 +3,7 @@ import { signIn, signOut } from "@/auth";
 import { auth } from "@/auth";
 import { toast } from "@/components/ui/use-toast";
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 
 type datacheck = {
   email: string;
@@ -58,9 +59,13 @@ export const toProtectLogin = async () => {
   }
 };
 
-import { cookies } from "next/headers";
-export const getCookie = async () => {
-  "use server";
-  const cookie = cookies().get("__Secure-authjs.session-token");
-  return cookie;
+const currentEnv = process.env.NODE_ENV;
+export const getCookies = () => {
+  if (currentEnv === "development") {
+    const reqCookie = cookies().get("authjs.session-token");
+    return reqCookie?.value;
+  } else {
+    const reqCookie = cookies().get("__Secure-authjs.session-token");
+    return reqCookie?.value;
+  }
 };
