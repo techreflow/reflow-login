@@ -53,7 +53,7 @@ export function Login() {
       await doSign(userInfo);
       toast({ title: "Logged In successfully", variant: "default" });
       const cook = await getCookies();
-      Cookies.set("authToken", cook ?? "");
+      Cookies.set("authToken", cook ?? "", { expires: 2 });
       console.log(cook);
       console.log("Form submitted successfully");
     } catch (error) {

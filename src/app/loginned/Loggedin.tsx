@@ -265,7 +265,7 @@ const Loggedin: React.FC = () => {
                 if (environment === "development") {
                   router.push(`http://localhost:3001?user=${Cookies.get("authToken")}`);
                 } else {
-                  router.push(`https://reflow-web.vercel.app?user=${Cookies.get("authToken")}`);
+                  router.push(`https://reflow-dashboard.vercel.app/?user=${Cookies.get("authToken")}`);
                 }
               }}
             >
