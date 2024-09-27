@@ -20,18 +20,30 @@ export default async function Home() {
           <span className="inline-block">Efficiency with Automation</span>
 
           <div className="text-base lg:text-lg text-gray-800 my-[50px] leading-[1.25rem] lg:leading-[1.5rem] font-normal">
-            <span className="inline-block">Achieve Zero Downtime, Zero Injuries, and{"   "}</span>
-            <span className="inline-block">{`Zero Financial Losses with Reflow's`}{" "}</span>
+            <span className="inline-block">
+              Achieve Zero Downtime, Zero Injuries, and{"   "}
+            </span>
+            <span className="inline-block">
+              {`Zero Financial Losses with Reflow's`}{" "}
+            </span>
             <span className="inline-block">Cutting-Edge Control Systems </span>
           </div>
           <div className="flex items-end h-[30%] text-[#1d1d1d] text-sm mt-[6.5rem] space-x-[30px]">
             {session ? (
-              <Link
-                href="/#products"
-                className="bg-white text-black border border-black hover:bg-black hover:text-white py-3.5 px-6 rounded-3xl"
-              >
-                Explore
-              </Link>
+              <>
+                <Link
+                  href="/loginned"
+                  className="bg-black text-white border border-black hover:bg-white hover:text-black py-3.5 px-6 rounded-3xl"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/#products"
+                  className="bg-white text-black border border-black hover:bg-black hover:text-white py-3.5 px-6 rounded-3xl"
+                >
+                  Explore
+                </Link>
+              </>
             ) : (
               <>
                 <Link
@@ -65,13 +77,15 @@ export default async function Home() {
         <div className="flex flex-col h-full w-full justify-center lg:w-[35%] text-white m-7 mt-[5rem] ml-9 p-8">
           <h1 className="text-2xl lg:text-4xl font-semibold">Services</h1>
           <p className="text-black mt-5 leading-[1.25rem] lg:leading-[1.8rem] text-base lg:text-lg w-full lg:w-[95%]">
-            Use data to increase yield, make production faster, and cheaper with fewer resources than ever before.
-            ReFlowMetrics, Capture and analyse real-time data from your production to deliver actionable insights to
-            drive the decisions that matter.
+            Use data to increase yield, make production faster, and cheaper with
+            fewer resources than ever before. ReFlowMetrics, Capture and analyse
+            real-time data from your production to deliver actionable insights
+            to drive the decisions that matter.
           </p>
           <p className="text-black my-5  leading-[1.25rem] lg:leading-[1.8rem] text-base lg:text-lg w-full lg:w-[95%]">
-            No expensive integrators, no custom development, no physical configuration. Finally, the production
-            monitoring and analytics platform you deserve.
+            No expensive integrators, no custom development, no physical
+            configuration. Finally, the production monitoring and analytics
+            platform you deserve.
           </p>
           <div className="flex items-center h-[30%]">
             <Link
@@ -84,7 +98,11 @@ export default async function Home() {
         </div>
 
         <div className="relative flex items-center justify-center h-[50%] lg:h-[70%] rounded-3xl m-7 mr-[2rem] mt-0 lg:mr-[7rem] w-full lg:w-[60%] overflow-hidden">
-          <img src="/newdash.png" alt="Table" className="rounded-3xl h-[500px] w-[900px]" />
+          <img
+            src="/newdash.png"
+            alt="Table"
+            className="rounded-3xl h-[500px] w-[900px]"
+          />
         </div>
       </section>
 
@@ -95,7 +113,9 @@ export default async function Home() {
         id="about"
         className="h-[128px] bg-[#00afef] text-white flex justify-start items-center text-xl lg:text-2xl"
       >
-        <p className="px-[4rem] flex justify-start items-center">Meet Our Founders</p>
+        <p className="px-[4rem] flex justify-start items-center">
+          Meet Our Founders
+        </p>
       </div>
       <section
         id="aboutus"
@@ -124,11 +144,15 @@ export default async function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
             <div className="flex flex-col items-center">
               <div className="bg-[url('/founder21.jpeg')] bg-cover bg-center h-48 w-48 lg:h-64 lg:w-64 rounded-3xl"></div>
-              <p className="mt-4 text-xl font-semibold text-gray-700">Chakreesh</p>
+              <p className="mt-4 text-xl font-semibold text-gray-700">
+                Chakreesh
+              </p>
             </div>
             <div className="flex flex-col items-center">
               <div className="bg-[url('/founder16.jpeg')] bg-cover bg-center h-48 w-48 lg:h-64 lg:w-64 rounded-3xl"></div>
-              <p className="mt-4 text-xl font-semibold text-gray-700">Rajkumar</p>
+              <p className="mt-4 text-xl font-semibold text-gray-700">
+                Rajkumar
+              </p>
             </div>
           </div>
         </div>

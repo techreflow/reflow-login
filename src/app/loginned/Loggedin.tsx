@@ -246,21 +246,22 @@ const Loggedin: React.FC = () => {
   const dev = process.env.DEV_DASHBOARD_URL;
 
   return (
-    <div className="flex flex-col gap-4 justify-center items-center min-h-screen min-w-full bg-white text-black">
+    <div className="flex flex-col gap-4 justify-center items-center min-h-screen min-w-full bg-white text-black bg-[url('/industry.jpg')] object-cover object-bottom">
       {user ? (
         <>
-          <h1 className="text-2xl mt-4 font-bold mb-4">
+          <h1 className="text-5xl font-sans mt-4 font-bold mb-8">
             Welcome, {user.firstName} {user.lastName}
           </h1>
         </>
       ) : null}
       {session?.user ? (
         working ? (
-          <p className="text-2xl">
+          <p className="">
             {" "}
             <button
+              type="button"
               title="redirect"
-              className="text-white px-8 py-4 bg-black rounded-full text-xl font-semibold tracking-wide"
+              className="text-white px-8 py-4 bg-black rounded-full text-2xl font-bold tracking-wider"
               onClick={() => {
                 if (environment === "development") {
                   router.push(`http://localhost:3001?user=${Cookies.get("authToken")}`);
