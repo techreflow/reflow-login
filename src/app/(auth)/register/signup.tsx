@@ -27,7 +27,18 @@ export function Signup() {
     password: "",
     activationCode: "",
   });
+  const [errors, setErrors] = useState<Partial<UserInfo>>({});
   const [passwordVisible, setPasswordVisible] = useState(false); // State to toggle password visibility
+
+  const validateFields = () => {
+    const newErrors: Partial<UserInfo> = {};
+    if (!userInfo.firstName) newErrors.firstName = "First name is required.";
+    if (!userInfo.lastName) newErrors.lastName = "Last name is required.";
+    if (!userInfo.email) newErrors.email = "Email is required.";
+    if (!userInfo.password) newErrors.password = "Password is required.";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Returns true if no errors
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,13 +49,19 @@ export function Signup() {
       return;
     }
 
-    const { firstName, lastName, email, password, activationCode } = userInfo;
+    const { firstName, lastName, email, password } = userInfo;
+
+    if (!validateFields()) {
+      setLoading(false);
+      return;
+    }
+
     const user = {
       firstName,
       lastName,
       email,
       password,
-      activationCode,
+      activationCode: userInfo.activationCode, // Company Name is optional
       activationCodeExpiry: new Date(Date.now() + 3600000),
     };
 
@@ -72,6 +89,7 @@ export function Signup() {
     }
   };
 
+
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -80,7 +98,9 @@ export function Signup() {
     <>
       <div className="h-full w-full flex flex-col md:flex-row justify-evenly md:pr-[3rem] bg-white items-center">
         <div className="h-full w-full md:w-[40%] bg-white p-6">
-          <h1 className="text-black font-bold tracking-wide text-4xl">Register</h1>
+          <h1 className="text-black font-bold tracking-wide text-4xl">
+            Register
+          </h1>
           <p className="text-gray-600 mt-[1rem]">Register to get started</p>
           <div className="bg-gray-100 mt-8 p-8 rounded-3xl">
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -96,6 +116,9 @@ export function Signup() {
                       setUserInfo({ ...userInfo, firstName: e.target.value })
                     }
                   />
+                  {errors.firstName && (
+                    <p className="text-red-500 text-sm">{errors.firstName}</p>
+                  )}
                 </LabelInputContainer>
                 <LabelInputContainer>
                   <Label htmlFor="lastname">Last name</Label>
@@ -108,9 +131,12 @@ export function Signup() {
                       setUserInfo({ ...userInfo, lastName: e.target.value })
                     }
                   />
+                  {errors.lastName && (
+                    <p className="text-red-500 text-sm">{errors.lastName}</p>
+                  )}
                 </LabelInputContainer>
               </div>
-              <LabelInputContainer className="mb-4">
+              <LabelInputContainer>
                 <Label htmlFor="email">Email Address</Label>
                 <Input
                   id="email"
@@ -121,10 +147,13 @@ export function Signup() {
                     setUserInfo({ ...userInfo, email: e.target.value })
                   }
                 />
+                {errors.email && (
+                  <p className="text-red-500 text-sm">{errors.email}</p>
+                )}
               </LabelInputContainer>
-              <LabelInputContainer className="relative mb-4">
+              <LabelInputContainer>
                 <Label htmlFor="password">Password</Label>
-                <div className="flex items-center relative  border-gray-300 focus-within:border-black rounded">
+                <div className="relative">
                   <Input
                     type={passwordVisible ? "text" : "password"}
                     id="password"
@@ -139,15 +168,14 @@ export function Signup() {
                     type="button"
                     onClick={togglePasswordVisibility}
                     className="absolute right-0 p-2 text-gray-500 text-2xl"
-                    style={{ top: '50%', transform: 'translateY(-50%)' }}
+                    style={{ top: "50%", transform: "translateY(-50%)" }}
                   >
-                    {passwordVisible ? (
-                      <AiFillEyeInvisible />
-                    ) : (
-                      <AiFillEye />
-                    )}
+                    {passwordVisible ? <AiFillEyeInvisible /> : <AiFillEye />}
                   </button>
                 </div>
+                {errors.password && (
+                  <p className="text-red-500 text-sm">{errors.password}</p>
+                )}
               </LabelInputContainer>
               <LabelInputContainer className="mb-8">
                 <Label htmlFor="activationCode">Company Name</Label>
@@ -162,7 +190,9 @@ export function Signup() {
                 />
               </LabelInputContainer>
               <button
-                className={`py-2 px-4 bg-black text-white rounded-xl ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`py-2 px-4 bg-black text-white rounded-xl ${
+                  loading ? "opacity-50 cursor-not-allowed" : ""
+                }`}
                 type="submit"
                 disabled={loading}
               >
@@ -173,9 +203,7 @@ export function Signup() {
         </div>
 
         <div className="w-full md:w-[40%] text-black h-[80vh] flex flex-col justify-center items-center">
-          <h2 className="font-bold text-xl text-neutral-800">
-            WELCOME TO{" "}
-          </h2>
+          <h2 className="font-bold text-xl text-neutral-800">WELCOME TO </h2>
           <Image
             src="/lname.png"
             width={500}
