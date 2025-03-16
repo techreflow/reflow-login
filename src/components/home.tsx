@@ -6,79 +6,157 @@ import React from "react";
 import Products from "./products";
 import Image from "next/image";
 
-export default function Home() {
-  return (
-    <main className="bg-gray-100">
-      {/* Navbar */}
-      <nav className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <a href="#" className="text-xl font-bold text-gray-800">ReFlow</a>
-          <ul className="hidden md:flex space-x-6">
-            <li><a href="#home" className="text-gray-600 hover:text-blue-500">Home</a></li>
-            <li><a href="#why-reflow" className="text-gray-600 hover:text-blue-500">Why ReFlow?</a></li>
-            <li><a href="#contact" className="text-gray-600 hover:text-blue-500">Contact</a></li>
-          </ul>
-        </div>
-      </nav>
+export default async function Home() {
+  const session = await getAuth();
 
-      {/* Hero Section */}
+  return (
+    <div className="bg-white overflow-hidden">
       <section
         id="home"
-        className="relative bg-[url('/industry.jpg')] w-full h-screen bg-cover flex flex-col justify-center items-center px-4 py-[5rem] lg:px-8 text-center"
+        className="bg-[url('/industry.jpg')] w-full h-screen bg-contain flex flex-col justify-start px-4 py-[5rem] lg:px-8"
       >
-        {/* Overlay for better text contrast */}
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-
-        <div className="relative z-10 text-white text-2xl lg:text-4xl mb-4 font-semibold leading-[2rem] tracking-wide w-full lg:w-[50%] my-5 mx-auto px-8">
-          <span className="inline-block">Increasing Manufacturing Performance</span>
+        <div className="text-black text-2xl lg:text-4xl mb-4 mt-[1.5rem] font-semibold leading-[1.75rem] lg:leading-[2.75rem] tracking-wide w-full lg:w-[48%] my-5 mx-0 lg:mx-[2rem] lg:px-8">
+          <span className="inline-block">Increasing Manufacturing Performance </span>
           <span className="inline-block">of Pharma Industries using AI Devices</span>
 
-          <div className="text-base lg:text-lg text-gray-200 my-[50px] leading-[1.5rem]">
-            <span className="inline-block">Achieve Zero Downtime, Zero Injuries, and </span>
-            <span className="inline-block">{`Zero Financial Losses with ReFlow's`} </span>
-            <span className="inline-block">Cutting-Edge Control Systems</span>
+          <div className="text-base lg:text-lg text-gray-800 my-[50px] leading-[1.25rem] lg:leading-[1.5rem] font-normal">
+            <span className="inline-block">
+              Achieve Zero Downtime, Zero Injuries, and{"   "}
+            </span>
+            <span className="inline-block">
+              {`Zero Financial Losses with Reflow's`}{" "}
+            </span>
+            <span className="inline-block">Cutting-Edge Control Systems </span>
+          </div>
+          <div className="flex items-end h-[30%] text-[#1d1d1d] text-sm mt-[6.5rem] space-x-[30px]">
+            {session ? (
+              <>
+                <Link
+                  href="/loginned"
+                  className="bg-black text-white border border-black hover:bg-white hover:text-black py-3.5 px-6 rounded-3xl"
+                >
+                  Login
+                </Link>
+                <Link
+                  href="/#products"
+                  className="bg-white text-black border border-black hover:bg-black hover:text-white py-3.5 px-6 rounded-3xl"
+                >
+                  Explore
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/login"
+                  className="bg-black text-white border border-black hover:bg-white hover:text-black py-3.5 px-6 rounded-3xl"
+                >
+                  Login
+                </Link>
+
+                <Link
+                  href="/servc"
+                  className="bg-white text-black border border-black hover:bg-black hover:text-white py-3.5 px-6 rounded-3xl"
+                >
+                  Explore
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </section>
+      <div className="h-[0.3rem] bg-white"></div>
+      <Products />
+      <div className="h-[105px] bg-black flex justify-center items-center font-[200] text-lg lg:text-[32px]">
+        {`"Automate to Innovate"`}
+      </div>
 
-      {/* Why ReFlow Section */}
-      <section id="why-reflow" className="py-16 bg-white">
-        <div className="container mx-auto text-center px-6 lg:px-20">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-10">Why Choose ReFlow?</h2>
+      <section
+        id="services"
+        className="w-full h-auto lg:h-[820px] flex flex-col lg:flex-row bg-[#00afef] items-center justify-between"
+      >
+        <div className="flex flex-col h-full w-full justify-center lg:w-[35%] text-white m-7 mt-[5rem] ml-9 p-8">
+          <h1 className="text-2xl lg:text-4xl font-semibold">Services</h1>
+          <p className="text-black mt-5 leading-[1.25rem] lg:leading-[1.8rem] text-base lg:text-lg w-full lg:w-[95%]">
+            Use data to increase yield, make production faster, and cheaper with
+            fewer resources than ever before. ReFlowMetrics, Capture and analyse
+            real-time data from your production to deliver actionable insights
+            to drive the decisions that matter.
+          </p>
+          <p className="text-black my-5  leading-[1.25rem] lg:leading-[1.8rem] text-base lg:text-lg w-full lg:w-[95%]">
+            No expensive integrators, no custom development, no physical
+            configuration. Finally, the production monitoring and analytics
+            platform you deserve.
+          </p>
+          <div className="flex items-center h-[30%]">
+            <Link
+              href="/servc"
+              className="text-sm bg-black text-white border border-black hover:bg-white hover:text-black py-3 px-6 rounded-3xl"
+            >
+              {`View More `}
+            </Link>
+          </div>
+        </div>
 
-          {/* Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Feature 1 */}
-            <div className="p-6 bg-gray-100 shadow-md rounded-lg transition-transform transform hover:scale-105">
-              <h3 className="text-xl font-semibold text-gray-700 mb-3">Automated Process Optimization</h3>
-              <p className="text-gray-600">Maximize efficiency with AI-driven process control.</p>
+        <div className="relative flex items-center justify-center h-[50%] lg:h-[70%] rounded-3xl m-7 mr-[2rem] mt-0 lg:mr-[7rem] w-full lg:w-[60%] overflow-hidden">
+          <img
+            src="/newdash.png"
+            alt="Table"
+            className="rounded-3xl h-[500px] w-[900px]"
+          />
+        </div>
+      </section>
+
+      <section id="faq" className="min-h-[600px] flex items-center">
+        <FAQ />
+      </section>
+      <div
+        id="about"
+        className="h-[128px] bg-[#00afef] text-white flex justify-start items-center text-xl lg:text-2xl"
+      >
+        <p className="px-[4rem] flex justify-start items-center">
+          Meet Our Founders
+        </p>
+      </div>
+      <section
+        id="aboutus"
+        className="w-full h-auto lg:h-[70vh] flex flex-col lg:flex-row bg-white items-center justify-between"
+      >
+        <div className="flex flex-col h-full w-full lg:w-[55%] text-black m-7 mt-[10rem] ml-9 p-8">
+          <h1 className="text-2xl lg:text-4xl font-semibold">Our Journey</h1>
+          <p className="text-gray-600 my-5 leading-[1.25rem] lg:leading-[1.5rem] text-base lg:text-lg w-full lg:w-[80%]">
+            {`In the age of Industry 4.0, staying ahead requires a competitive edge. Since our founding in 2022, We at
+            ReFlow Technologies have been at the forefront of driving digital transformation in factories. We
+            specialize in the automated capture, transformation, and contextualization of process data, empowering
+            businesses to achieve zero downtime, zero resource wastage, and maximum efficiency. Our vision is a future
+            where every factory operates at peak performance, setting new standards in operational excellence.`}
+          </p>
+          <div className="flex items-center h-[20%]">
+            <Link
+              href="/register"
+              className="text-sm bg-black text-white border border-black hover:bg-white hover:text-black py-3 px-6 rounded-3xl"
+            >
+              {`Contact Us`}
+            </Link>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center justify-center w-full lg:w-1/2 p-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
+            <div className="flex flex-col items-center">
+              <div className="bg-[url('/founder21.jpeg')] bg-cover bg-center h-48 w-48 lg:h-64 lg:w-64 rounded-3xl"></div>
+              <p className="mt-4 text-xl font-semibold text-gray-700">
+                Chakreesh
+              </p>
             </div>
-
-            {/* Feature 2 */}
-            <div className="p-6 bg-gray-100 shadow-md rounded-lg transition-transform transform hover:scale-105">
-              <h3 className="text-xl font-semibold text-gray-700 mb-3">Real-Time Monitoring</h3>
-              <p className="text-gray-600">Stay ahead with instant data insights and analytics.</p>
-            </div>
-
-            {/* Feature 3 */}
-            <div className="p-6 bg-gray-100 shadow-md rounded-lg transition-transform transform hover:scale-105">
-              <h3 className="text-xl font-semibold text-gray-700 mb-3">Predictive Maintenance</h3>
-              <p className="text-gray-600">Prevent breakdowns before they happen with AI-powered predictions.</p>
+            <div className="flex flex-col items-center">
+              <div className="bg-[url('/Founder3.jpeg')] bg-cover bg-center h-48 w-48 lg:h-64 lg:w-64 rounded-3xl"></div>
+              <p className="mt-4 text-xl font-semibold text-gray-700">
+                Rajkumar
+              </p>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-16 bg-gray-800 text-white text-center">
-        <div className="container mx-auto px-6 lg:px-20">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">Get in Touch</h2>
-          <p className="text-lg text-gray-300 mb-8">Let's revolutionize your factory together.</p>
-          <a href="mailto:contact@reflow.com" className="px-6 py-3 bg-blue-500 text-white rounded-lg text-lg hover:bg-blue-600">
-            Contact Us
-          </a>
-        </div>
-      </section>
-    </main>
+    </div>
   );
 }
