@@ -48,7 +48,7 @@ export default async function Home() {
               <>
                 <Link
                   href="/login"
-                  className="bg-black text-white border border-black hover:bg-white hover:text-black py-3.5 px-6 rounded-3xl"
+                  className="bg-black text-white border border-black hover:bg-white hover:text-black py-4 px-8 rounded-full focus:ring-2 focus:ring-black transition duration-300"
                 >
                   Login
                 </Link>
