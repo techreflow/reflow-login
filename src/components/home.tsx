@@ -149,7 +149,7 @@ export default async function Home() {
               </p>
             </div>
             <div className="flex flex-col items-center">
-              <div className="bg-[url('/Founder2.png')] bg-cover bg-center h-48 w-48 lg:h-64 lg:w-64 rounded-3xl"></div>
+              <div className="bg-[url('/Founder3.jpeg')] bg-cover bg-center h-48 w-48 lg:h-64 lg:w-64 rounded-3xl"></div>
               <p className="mt-4 text-xl font-semibold text-gray-700">
                 Rajkumar
               </p>
