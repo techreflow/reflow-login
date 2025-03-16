@@ -16,8 +16,8 @@ export default async function Home() {
         className="bg-[url('/industry.jpg')] w-full h-screen bg-contain flex flex-col justify-start px-4 py-[5rem] lg:px-8"
       >
         <div className="text-black text-2xl lg:text-4xl mb-4 mt-[1.5rem] font-semibold leading-[1.75rem] lg:leading-[2.75rem] tracking-wide w-full lg:w-[48%] my-5 mx-0 lg:mx-[2rem] lg:px-8">
-          <span className="inline-block">Revolutionizing Chemical</span>
-          <span className="inline-block">Efficiency with Automation</span>
+          <span className="inline-block">Increasing Manufacturing Performance </span>
+          <span className="inline-block">of Pharma Industries using AI Devices</span>
 
           <div className="text-base lg:text-lg text-gray-800 my-[50px] leading-[1.25rem] lg:leading-[1.5rem] font-normal">
             <span className="inline-block">
